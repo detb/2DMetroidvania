@@ -19,9 +19,12 @@ public class UpgradeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x,
+        if (upgrade != PlayerInventory.Upgrades.Coin)
+        {
+            transform.position = new Vector3(transform.position.x,
             originalY + ((float)Mathf.Sin(Time.time) * floatStrength),
             transform.position.z);
+        }
     }
 
     public void UpgradePlayer()

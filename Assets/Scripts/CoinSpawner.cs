@@ -16,8 +16,8 @@ public sealed class CoinSpawner : MonoBehaviour
         for (int i = 0; i < count; ++i)
         {
             float randomX = Random.Range(-0.1f, 0.1f);
-            float randomy = Random.Range(0f, 0.15f);
-            Vector3 position = new Vector3(transform.position.x + randomX, transform.position.y + randomy);
+            float randomY = Random.Range(0.05f, 0.15f);
+            Vector3 position = new Vector3(transform.position.x + randomX, transform.position.y + randomY);
             Instantiate(prefab, position, Quaternion.identity);
         }
     }

@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
 
     public enum Upgrades
     {
-        DoubleJump, Dash, BiggerSword
+        DoubleJump, Dash, HeavyAttack, Coin, DamageLevelUp, WallJump
     }
 
     public bool HasUpgrade(Upgrades upgrade)
@@ -25,6 +25,7 @@ public class PlayerInventory : MonoBehaviour
                 player.extraJumps = 2;
                 break;
             case Upgrades.Dash: break;
+            case Upgrades.Coin: AddCoin(); break;
             default: break;
         }
     }

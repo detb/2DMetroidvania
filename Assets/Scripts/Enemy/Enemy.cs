@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     private AIMeleeAttackDetector meleeAttackDetector;
 
     public Transform player;
-    public LayerMask playerLayers;
+    public LayerMask playerLayer;
 
     public int maxHealth = 100;
     private int currentHealth;
@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
             {
                 attackTime = Time.time + 2f / attackSpeed;
                 enemyAnimator.SetTrigger("attack");
-                Attack();
             }
         }
     }
@@ -65,17 +64,13 @@ public class Enemy : MonoBehaviour
 
     void Attack()
     {
-        // Setting attack animation
-        //enemyAnimator.SetTrigger("attack");
-
-        // Detect enemy's in attack range
-        Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+        // Detect enemy's in attacks range
+        Collider2D playerHit = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
 
         // add damage
-        foreach (Collider2D enemy in playerHit)
-        {
-            enemy.GetComponent<PlayerController>().TakeDamage(attackDamage);
-        }
+        if (playerHit != null)
+            playerHit.GetComponent<PlayerController>().TakeDamage(attackDamage);
+        
     }
     
     void Die()

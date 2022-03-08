@@ -8,6 +8,7 @@ public class AIMeleeAttackDetector : MonoBehaviour
     public LayerMask targetLayer;
 
     public UnityEvent<GameObject> OnPlayerDetected;
+    public Vector2 detectorOriginOffset = Vector2.zero;
 
     [Range(.1f, 1)]
     public float radius;

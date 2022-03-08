@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        playerAnimator.SetTrigger("hit");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }

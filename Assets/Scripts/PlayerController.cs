@@ -8,8 +8,12 @@ public class PlayerController : MonoBehaviour
     protected private Rigidbody2D m_RigidBody2D;
     protected private Animator playerAnimator;
 
+    public HealthBar healthBar;
+
     public int extraJumps;
     public int extraJumpsValue;
+    public int maxHealth = 4;
+    public int currentHealth;
 
     private bool m_Grounded, m_FacingRight = true;
     [SerializeField] protected bool m_AirControl = false;
@@ -31,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+
         extraJumps = extraJumpsValue;
         m_RigidBody2D = GetComponent<Rigidbody2D>();
         m_RigidBody2D.freezeRotation = true;
@@ -135,5 +142,11 @@ public class PlayerController : MonoBehaviour
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }

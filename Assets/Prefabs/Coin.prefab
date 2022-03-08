@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7649316328400607511}
   - component: {fileID: 4483561468426687258}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: coinbody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &5954647548399003253
 CircleCollider2D:

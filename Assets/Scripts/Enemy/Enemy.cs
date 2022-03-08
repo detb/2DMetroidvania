@@ -8,20 +8,29 @@ public class Enemy : MonoBehaviour
     
     protected private Animator enemyAnimator;
     private AIPlayerDetector playerDetector;
+    private AIMeleeAttackDetector meleeAttackDetector;
 
     public Transform player;
+    public LayerMask playerLayers;
 
     public int maxHealth = 100;
     private int currentHealth;
 
     public UnityEvent onEnemyDiedEvent;
     public bool isFlipped = true;
-    
+
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public float attackSpeed = 4f;
+    protected private float attackTime = 0f;
+    public int attackDamage;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyAnimator = GetComponent<Animator>();
         playerDetector = GetComponent<AIPlayerDetector>();
+        meleeAttackDetector = GetComponent<AIMeleeAttackDetector>();
         currentHealth = maxHealth;
     }
 
@@ -31,6 +40,17 @@ public class Enemy : MonoBehaviour
             enemyAnimator.SetBool("playerDetected", true);
         else if (!playerDetector.playerDetected)
             enemyAnimator.SetBool("playerDetected", false);
+
+
+        if (Time.time >= attackTime)
+        {
+            if (meleeAttackDetector.playerDetected)
+            {
+                attackTime = Time.time + 2f / attackSpeed;
+                enemyAnimator.SetTrigger("attack");
+                Attack();
+            }
+        }
     }
 
     public void TakeDamage(int damage)
@@ -41,6 +61,21 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
             Die();
+    }
+
+    void Attack()
+    {
+        // Setting attack animation
+        //enemyAnimator.SetTrigger("attack");
+
+        // Detect enemy's in attack range
+        Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+
+        // add damage
+        foreach (Collider2D enemy in playerHit)
+        {
+            enemy.GetComponent<PlayerController>().TakeDamage(attackDamage);
+        }
     }
     
     void Die()
@@ -82,4 +117,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 }

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 {
     public int playerCoins;
     private PlayerController player;
 
+
+    public TextMeshProUGUI countText;
     public enum Upgrades
     {
         DoubleJump, Dash, HeavyAttack, Coin, DamageLevelUp, WallJump
@@ -33,6 +36,7 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerController>();
+        SetCountText();
     }
 
     // Update is called once per frame
@@ -44,5 +48,11 @@ public class PlayerInventory : MonoBehaviour
     public void AddCoin()
     {
         playerCoins++;
+        SetCountText();
+    }
+
+    void SetCountText()
+    {
+        countText.text = "" + playerCoins;
     }
 }

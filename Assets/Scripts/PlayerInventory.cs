@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public int playerCoins;
     private PlayerController player;
+
     public enum Upgrades
     {
         DoubleJump, Dash, BiggerSword
@@ -36,6 +37,11 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void AddCoin()
+    {
+        playerCoins++;
     }
 }

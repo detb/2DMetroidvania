@@ -5,26 +5,36 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {   
-    private Rigidbody2D m_RigidBody2D;
+    protected private Rigidbody2D m_RigidBody2D;
+    protected private Animator playerAnimator;
+
+    public int extraJumps;
+    public int extraJumpsValue;
 
     private bool m_Grounded, m_FacingRight = true;
-    public bool m_AirControl = false;
+    [SerializeField] protected bool m_AirControl = false;
     private Vector3 m_Velocity = Vector3.zero;
 
-    public float m_MovementSmoothing = .05f;
-    public float m_JumpForce = 600f;
+    [SerializeField] protected float m_MovementSmoothing = .05f;
+    [SerializeField] protected float m_JumpForce = 5f;
 
-    public LayerMask m_WhatIsGround;
-    public Transform m_GroundCheck;
-    public Transform m_CeilingCheck;
-    public float m_GroundedRadius = .2f;
+    [SerializeField] protected LayerMask m_WhatIsGround;
+    [SerializeField] protected Transform m_GroundCheck;
+    [SerializeField] protected Transform m_CeilingCheck;
+    [SerializeField] protected float m_GroundedRadius = .2f;
 
-    public UnityEvent OnLandEvent;
+    [SerializeField] protected UnityEvent OnLandEvent;
+
+
+    public float fallMultiplier = 2f;
+    public float lowJumpMultiplier = 2f;
 
     void Start()
     {
+        extraJumps = extraJumpsValue;
         m_RigidBody2D = GetComponent<Rigidbody2D>();
         m_RigidBody2D.freezeRotation = true;
+        playerAnimator = GetComponent<Animator>();
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
@@ -32,36 +42,66 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float move, bool jump)
     {
+        if (m_Grounded)
+        {
+            // reset jump anim
+            playerAnimator.ResetTrigger("jump");
+            playerAnimator.SetBool("falling", false);
+        }
+
         if (m_Grounded || m_AirControl)
         {
-            Vector3 targetVelocity = new Vector2(move * 10f, m_RigidBody2D.velocity.y);
+            Vector3 targetVelocity;
+            // If in air multiply by 9 to get lower velocity
+            if (m_Grounded) 
+                targetVelocity = new Vector2(move * 10f, m_RigidBody2D.velocity.y);
+            else
+                targetVelocity = new Vector2(move * 9f, m_RigidBody2D.velocity.y);
+
+            // Adding velocity to RB
             m_RigidBody2D.velocity = Vector3.SmoothDamp(m_RigidBody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-            // If the input is moving the player right and the player is facing left...
+            // Setting float for run animation
+            playerAnimator.SetFloat("speed", Mathf.Abs(move));
+
+            // Check to see if player is facing right or left and flipping player accordingly
             if (move > 0 && !m_FacingRight)
-            {
-                // ... flip the player.
                 Flip();
-            }
-            // Otherwise if the input is moving the player left and the player is facing right...
             else if (move < 0 && m_FacingRight)
-            {
-                // ... flip the player.
                 Flip();
-            }
         }
 
-        // If the player should jump...
-        if (m_Grounded && jump)
+        // Double jump handling
+        if (jump && extraJumps > 0)
         {
+            playerAnimator.SetTrigger("jump");
+
             // Add a vertical force to the player.
             m_Grounded = false;
-            m_RigidBody2D.AddForce(new Vector2(0f, m_JumpForce));
+            m_RigidBody2D.velocity = Vector2.zero;
+            m_RigidBody2D.AddForce(transform.up * m_JumpForce);
+            extraJumps--;
+
         }
+        // If the player should jump...
+        if (m_Grounded && jump && extraJumps == 0)
+        {
+            // Play jump anim
+            playerAnimator.SetTrigger("jump");
+
+            // Add a vertical force to the player.
+            m_Grounded = false;
+            m_RigidBody2D.AddForce(transform.up * m_JumpForce);
+        }
+
+        // setting falling animation if y velocity is under -1
+        if (m_RigidBody2D.velocity.y < -1)
+            playerAnimator.SetBool("falling", true);
     }
 
     private void FixedUpdate()
     {
+        HandleLayers();
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
@@ -72,18 +112,28 @@ public class PlayerController : MonoBehaviour
             {
                 m_Grounded = true;
                 if (!wasGrounded)
+                {
+                    // Reset jump anim
+                    playerAnimator.ResetTrigger("jump");
+                    playerAnimator.SetBool("falling", false);
+                    extraJumps = extraJumpsValue;
                     OnLandEvent.Invoke();
+                }
             }
         }
     }
-
+    private void HandleLayers()
+    {
+        if (!m_Grounded)
+            playerAnimator.SetLayerWeight(1, 1);
+        else
+            playerAnimator.SetLayerWeight(1, 0);
+    }
     void Flip()
     {
         m_FacingRight = !m_FacingRight;
         Vector3 scaler = transform.localScale;
         scaler.x *= -1;
         transform.localScale = scaler;
-        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
-        renderer.flipX = !renderer.flipX;
     }
 }

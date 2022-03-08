@@ -5,20 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Coin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
   - Ground
+  - Wall
+  - Ceiling
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemies
+  - DeadEnemies
   - 
   - 
   - 

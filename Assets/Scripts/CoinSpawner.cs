@@ -4,9 +4,13 @@ using UnityEngine;
 
 public sealed class CoinSpawner : MonoBehaviour
 {
-    public int minimumCount = 3;
-    public int maximumCount = 5;
-    public GameObject prefab = null;
+    [Header("Coin amount and prefab")]
+        [SerializeField]
+        private int minimumCount = 3;
+        [SerializeField]
+        private int maximumCount = 5;
+        [SerializeField]
+        private GameObject prefab = null;
 
     public void Spawn()
     {
@@ -17,8 +21,9 @@ public sealed class CoinSpawner : MonoBehaviour
         {
             float randomX = Random.Range(-0.1f, 0.1f);
             float randomY = Random.Range(0.05f, 0.15f);
-            Vector3 position = new Vector3(transform.position.x + randomX, transform.position.y + randomY);
-            Instantiate(prefab, position, Quaternion.identity);
+            var position = transform.position;
+            Vector3 spawnPosition = new Vector3(position.x + randomX, position.y + randomY);
+            Instantiate(prefab, spawnPosition, Quaternion.identity);
         }
     }
 }

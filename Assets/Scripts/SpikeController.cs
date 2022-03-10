@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class SpikeController : MonoBehaviour
@@ -18,9 +19,7 @@ public class SpikeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-        {
+        if (other.CompareTag("Player"))
             HurtPlayer();
-        }
     }
 }

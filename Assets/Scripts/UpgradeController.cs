@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
@@ -21,23 +22,21 @@ public class UpgradeController : MonoBehaviour
     {
         if (upgrade != PlayerInventory.Upgrades.Coin)
         {
-            transform.position = new Vector3(transform.position.x,
-            originalY + ((float)Mathf.Sin(Time.time) * floatStrength),
-            transform.position.z);
+            var position = transform.position;
+            position = new Vector3(position.x, originalY + ((float)Mathf.Sin(Time.time) * floatStrength), position.z);
+            transform.position = position;
         }
     }
 
-    public void UpgradePlayer()
+    private void UpgradePlayer()
     {
         player.UpgradePlayer(upgrade);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-        {
-            UpgradePlayer();
-            Destroy(gameObject);
-        }
+        if (!other.CompareTag("Player")) return;
+        UpgradePlayer();
+        Destroy(gameObject);
     }
 }

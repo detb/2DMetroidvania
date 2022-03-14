@@ -114,7 +114,7 @@ namespace Player
 
         private void FixedUpdate()
         {
-            HandleLayers();
+            //HandleLayers();
             bool wasGrounded = grounded;
             grounded = false;
 
@@ -123,7 +123,9 @@ namespace Player
             {
                 if (t.gameObject == gameObject) continue;
                 grounded = true;
+                
                 if (wasGrounded) continue;
+                
                 // Reset jump anim
                 playerAnimator.ResetTrigger(Jump);
                 playerAnimator.SetBool(Falling, false);
@@ -131,10 +133,11 @@ namespace Player
                 OnLandEvent.Invoke();
             }
         }
-        private void HandleLayers()
-        {
-            playerAnimator.SetLayerWeight(1, !grounded ? 1 : 0);
-        }
+        // Was previously used to handle animation layers, with air and ground animations. Changed to only on layer for now
+        //private void HandleLayers()
+        //{
+        //    playerAnimator.SetLayerWeight(1, !grounded ? 1 : 0);
+        //}
 
         private void Flip()
         {
@@ -143,6 +146,11 @@ namespace Player
             Vector3 scaler = transformTo.localScale;
             scaler.x *= -1;
             transformTo.localScale = scaler;
+        }
+
+        public bool IsPlayerGrounded()
+        {
+            return grounded;
         }
 
         public void TakeDamage(int damage)

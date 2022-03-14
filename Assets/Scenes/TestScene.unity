@@ -183,7 +183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78262523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4516144, y: 0.35000014, z: -10}
+  m_LocalPosition: {x: -6.4521923, y: 0.35000014, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 382151951}
@@ -812,7 +812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4516144, y: 0.35000014, z: -10}
+  m_LocalPosition: {x: -6.4521923, y: 0.35000014, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1334,6 +1334,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103721531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103721532}
+  m_Layer: 10
+  m_Name: AttackPointDownwards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103721532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103721531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.023, y: -0.493, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1141278700}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141278697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1474,7 @@ Transform:
   - {fileID: 780750641}
   - {fileID: 2073621993}
   - {fileID: 635682422}
+  - {fileID: 1103721532}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1466,13 +1497,13 @@ MonoBehaviour:
   currentHealth: 0
   airControl: 1
   movementSmoothing: 0.01
-  jumpForce: 400
+  jumpForce: 275
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 1151362379}
   ceilingCheck: {fileID: 780750641}
-  groundedRadius: 0.2
+  groundedRadius: 0.05
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1502,10 +1533,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_Mass: 0.7
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.01
+  m_GravityScale: 2.25
   m_Material: {fileID: 6200000, guid: 4ea755573818a444a8e28ca63f2a4487, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1581,10 +1612,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 2073621993}
   attackPointUpwards: {fileID: 635682422}
+  attackPointDownwards: {fileID: 1103721532}
   attackRange: 0.22
   attackRangeUpwards: 0.1
-  attackSpeed: 2.5
+  attackRangeDownwards: 0.1
+  attackSpeed: 2
   attackDamage: 40
+  knockback: 8
   enemyLayers:
     serializedVersion: 2
     m_Bits: 2048
@@ -1612,7 +1646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151362378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.032, y: -0.234, z: 0}
+  m_LocalPosition: {x: -0.032, y: -0.3118, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141278700}
@@ -3378,17 +3412,13 @@ CompositeCollider2D:
         Y: 4000000
     - - X: 18000000
         Y: -4000000
-      - X: 6000100
+      - X: 6000000
         Y: -4000000
-      - X: 6000100
-        Y: -6000041
-      - X: 6000041
-        Y: -6000100
-      - X: -2000041
-        Y: -6000100
-      - X: -2000100
-        Y: -6000041
-      - X: -2000100
+      - X: 6000000
+        Y: -6000000
+      - X: -2000000
+        Y: -6000000
+      - X: -2000000
         Y: -4000000
       - X: -34000000
         Y: -4000000
@@ -3420,10 +3450,10 @@ CompositeCollider2D:
       - {x: -1.1999707, y: 0.4}
     - - {x: 1.7999709, y: -0.8}
       - {x: 1.7999709, y: -0.4}
-      - {x: 0.60001, y: -0.4000293}
-      - {x: 0.5999747, y: -0.60001}
-      - {x: -0.20001, y: -0.5999747}
-      - {x: -0.2000393, y: -0.4}
+      - {x: 0.6, y: -0.4000293}
+      - {x: 0.5999706, y: -0.6}
+      - {x: -0.2, y: -0.5999706}
+      - {x: -0.2000293, y: -0.4}
       - {x: -3.4, y: -0.3999706}
       - {x: -3.4000292, y: -0.2}
       - {x: -3.8, y: -0.1999706}
@@ -5397,7 +5427,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  maxHealth: 100
+  maxHealth: 150
   isFlipped: 1
   attackPoint: {fileID: 257863364}
   attackRange: 0.23
@@ -5910,7 +5940,7 @@ GameObject:
   - component: {fileID: 2036210424}
   - component: {fileID: 2036210425}
   - component: {fileID: 2036210426}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6248,7 +6278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073621992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.155, y: -0.009, z: 0}
+  m_LocalPosition: {x: 0.33, y: -0.009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141278700}
@@ -6414,6 +6444,10 @@ PrefabInstance:
     - target: {fileID: 2021453290955640379, guid: 7ccf9bd2e61d7ba4abeacc4fccd55cbc, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021453290955640379, guid: 7ccf9bd2e61d7ba4abeacc4fccd55cbc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ccf9bd2e61d7ba4abeacc4fccd55cbc, type: 3}

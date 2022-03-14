@@ -9,19 +9,17 @@ namespace Enemies
         private Animator enemyAnimator;
         private AIPlayerDetector playerDetector;
         private AIMeleeAttackDetector meleeAttackDetector;
+        private Transform player;
 
         [Header("Player")]
             [SerializeField]
-            private Transform player;
-            [SerializeField]
             private LayerMask playerLayer;
-
+            
         [Header("Health")]
             [SerializeField]
             private int maxHealth = 100;
             private int currentHealth;
 
-        
         [SerializeField]
         private bool isFlipped = true;
 
@@ -47,6 +45,7 @@ namespace Enemies
         // Start is called before the first frame update
         void Start()
         {
+            player = GameObject.Find("Player").transform;
             enemyAnimator = GetComponent<Animator>();
             playerDetector = GetComponent<AIPlayerDetector>();
             meleeAttackDetector = GetComponent<AIMeleeAttackDetector>();
@@ -97,7 +96,7 @@ namespace Enemies
         {
             enemyAnimator.SetBool(IsDead, true);
 
-            gameObject.layer = 12;
+            gameObject.layer = 12; // Assigning to dead enemies layer
             EnemyDiedEvent();
 
             Destroy(gameObject, 5f);

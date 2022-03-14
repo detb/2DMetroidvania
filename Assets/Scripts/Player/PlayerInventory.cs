@@ -5,8 +5,7 @@ namespace Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField]
-        private int playerCoins;
+        private static int playerCoins;
         private PlayerController player;
 
 
@@ -36,6 +35,7 @@ namespace Player
 
         void Start()
         {
+            DontDestroyOnLoad(gameObject);
             player = GetComponent<PlayerController>();
             SetCountText();
         }

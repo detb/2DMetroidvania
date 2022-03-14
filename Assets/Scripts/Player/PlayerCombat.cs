@@ -32,9 +32,11 @@ namespace Player
         
         private float attackTime = 0f;
 
-        [Header("Enemies LayerMask")]
+        [Header("Enemies & spikes LayerMask")]
             [SerializeField]
             private LayerMask enemyLayers;
+            [SerializeField]
+            private LayerMask spikeLayers;
             
         // Static triggers/bools/values for animations hashed
         private static readonly int Attackupwards = Animator.StringToHash("attackupwards");
@@ -60,6 +62,7 @@ namespace Player
 
         private void Attack()
         {
+            if (GetComponent<PlayerController>().IsFrozen()) return;
             if (!(Time.time >= attackTime)) return;
             // Check to see if attack was upwards or downwards
             if (Input.GetAxisRaw("Vertical") > 0)
@@ -79,9 +82,16 @@ namespace Player
             {
                 playerAnimator.SetTrigger(AttackDownwards);
                 
+                bool enemyHit = false;
+                
                 // Detect enemy's in attack range
                 Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPointDownwards.position, attackRangeDownwards, enemyLayers);
-                bool enemyHit = false;
+                int spikesHit =
+                    Physics2D.OverlapCircleNonAlloc(attackPointDownwards.position, attackRangeDownwards, new Collider2D[1],spikeLayers);
+                
+                if (spikesHit >= 1)
+                    enemyHit = true;
+                
                 // add damage
                 var knockbackDirection = Vector2.up;
                 foreach (Collider2D enemy in enemiesHit)

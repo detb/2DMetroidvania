@@ -5,9 +5,10 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        private bool frozen;
         private Rigidbody2D rigidBody2D;
         private Animator playerAnimator;
-        
+
         [Header("Health bar")]
             [SerializeField]
             public HealthBar healthBar;
@@ -42,9 +43,12 @@ namespace Player
         private static readonly int Falling = Animator.StringToHash("falling");
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int Speed = Animator.StringToHash("speed");
+        private static readonly int IsDead = Animator.StringToHash("isDead");
 
         void Start()
         {
+            DontDestroyOnLoad(gameObject);
+            
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
 
@@ -57,8 +61,28 @@ namespace Player
                 OnLandEvent = new UnityEvent();
         }
 
-        public void Move(float move, bool jump)
+        // TODO: Maybe this can be done more elegantly? with the freeze, unfreeze stuff
+        public bool IsFrozen()
         {
+            return frozen;
+        }
+        public void Freeze()
+        {
+            rigidBody2D.velocity = Vector2.zero;
+            playerAnimator.ResetTrigger(Jump);
+            playerAnimator.SetFloat(Speed, 0f);
+            playerAnimator.SetBool(Falling, false);
+            playerAnimator.ResetTrigger(Hit);
+            frozen = true;
+        }
+
+        public void Unfreeze()
+        {
+            frozen = false;
+        }
+        public void Move(float move, bool jump)
+        { 
+            if(frozen) return;
             if (grounded)
             {
                 // reset jump anim
@@ -114,6 +138,7 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if(frozen) return;
             //HandleLayers();
             bool wasGrounded = grounded;
             grounded = false;
@@ -158,6 +183,19 @@ namespace Player
             playerAnimator.SetTrigger(Hit);
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
+            if (currentHealth <= 0)
+                Die();
+        }
+        
+        // TODO: Make this work
+        void Die()
+        {
+            playerAnimator.SetBool(IsDead, true);
+
+            gameObject.layer = 12;
+
+            Destroy(gameObject, 5f);
+            enabled = false;
         }
     }
 }

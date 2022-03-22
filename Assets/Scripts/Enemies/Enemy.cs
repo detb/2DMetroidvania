@@ -1,6 +1,7 @@
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace Enemies
 {
@@ -94,6 +95,7 @@ namespace Enemies
     
         void Die()
         {
+            gameObject.GetComponentInChildren<Light2D>().intensity = 0f;
             enemyAnimator.SetBool(IsDead, true);
 
             gameObject.layer = 12; // Assigning to dead enemies layer

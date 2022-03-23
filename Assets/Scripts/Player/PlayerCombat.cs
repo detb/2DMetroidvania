@@ -41,7 +41,7 @@ namespace Player
         // Static triggers/bools/values for animations hashed
         private static readonly int Attackupwards = Animator.StringToHash("attackupwards");
         private static readonly int Attack1 = Animator.StringToHash("attack");
-        private static readonly int AttackDownwards = Animator.StringToHash("attackdownwards");
+        private static readonly int Attackdownwards = Animator.StringToHash("attackdownwards");
 
         // Start is called before the first frame update
         void Start()
@@ -55,86 +55,84 @@ namespace Player
         {
             if (!(Time.time >= attackTime)) return;
             if (!Input.GetButtonDown("Fire1")) return;
-            Attack();
+            if (Input.GetAxisRaw("Vertical") > 0)
+                playerAnimator.SetTrigger(Attackupwards);
+            if (Input.GetAxisRaw("Vertical") < 0 && !GetComponent<PlayerController>().IsPlayerGrounded())
+            {
+                playerAnimator.SetTrigger(Attackdownwards);
+                AttackDownwards();
+            }
+            else
+                playerAnimator.SetTrigger(Attack1);
             attackTime = Time.time + 1f / attackSpeed;
 
         }
 
+        private void AttackDownwards()
+        {
+            bool enemyHit = false;
+                
+            // Detect enemy's in attack range
+            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPointDownwards.position, attackRangeDownwards, enemyLayers);
+            int spikesHit =
+                Physics2D.OverlapCircleNonAlloc(attackPointDownwards.position, attackRangeDownwards, new Collider2D[1],spikeLayers);
+                
+            if (spikesHit >= 1)
+                enemyHit = true;
+                
+            // add damage
+            var knockbackDirection = Vector2.up;
+            foreach (Collider2D enemy in enemiesHit)
+            {
+                // find knockback direction
+                knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
+                enemyHit = true;
+                // When hitting spikes, other detection
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
+                
+            if (enemyHit) // Add knockback if enemy or spike is hit.
+            {
+                rb.velocity = knockbackDirection * knockback;
+            }
+        }
+
+        private void AttackUpwards()
+        {
+            if (GetComponent<PlayerController>().IsFrozen()) return;
+            // Detect enemy's in attack range
+            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPointUpwards.position, attackRangeUpwards, enemyLayers);
+
+            // add damage
+            foreach (Collider2D enemy in enemiesHit)
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
+        }
         private void Attack()
         {
             if (GetComponent<PlayerController>().IsFrozen()) return;
-            if (!(Time.time >= attackTime)) return;
-            // Check to see if attack was upwards or downwards
-            if (Input.GetAxisRaw("Vertical") > 0)
+            //bool enemyHit = false;
+            //var knockbackDirection = Vector2.left;
+            
+            // Detect enemy's in attack range
+            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+            // add damage
+            foreach (Collider2D enemy in enemiesHit)
             {
-                playerAnimator.SetTrigger(Attackupwards);
-                
-                // Detect enemy's in attack range
-                Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPointUpwards.position, attackRangeUpwards, enemyLayers);
-
-                // add damage
-                foreach (Collider2D enemy in enemiesHit)
-                {
-                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-                }
-            }
-            if (Input.GetAxisRaw("Vertical") < 0 && !GetComponent<PlayerController>().IsPlayerGrounded())
-            {
-                playerAnimator.SetTrigger(AttackDownwards);
-                
-                bool enemyHit = false;
-                
-                // Detect enemy's in attack range
-                Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPointDownwards.position, attackRangeDownwards, enemyLayers);
-                int spikesHit =
-                    Physics2D.OverlapCircleNonAlloc(attackPointDownwards.position, attackRangeDownwards, new Collider2D[1],spikeLayers);
-                
-                if (spikesHit >= 1)
-                    enemyHit = true;
-                
-                // add damage
-                var knockbackDirection = Vector2.up;
-                foreach (Collider2D enemy in enemiesHit)
-                {
-                    // find knockback direction
-                    knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
-                    enemyHit = true;
-                    // When hitting spikes, other detection
-                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-                }
-                
-                if (enemyHit) // Add knockback if enemy or spike is hit.
-                {
-                    rb.velocity = knockbackDirection * knockback;
-                }
-            }
-            else {
-                // Setting attack animation
-                playerAnimator.SetTrigger(Attack1);
-
-                //bool enemyHit = false;
-                //var knockbackDirection = Vector2.left;
-                
-                // Detect enemy's in attack range
-                Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-                // add damage
-                foreach (Collider2D enemy in enemiesHit)
-                {
-                    // find knockback direction
-                    //knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
-                    //enemyHit = true;
-                    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-                } 
-                
-                //TODO: If enemy hit, add knockback..
-                //if (enemyHit) // Add knockback if enemy or spike is hit.
-                //{
-                //    Debug.Log(knockbackDirection.ToString());
-                //    rb.velocity = knockbackDirection * knockback;
-                //}
-            }
-
+                // find knockback direction
+                //knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
+                //enemyHit = true;
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            } 
+            
+            //TODO: If enemy hit, add knockback..
+            //if (enemyHit) // Add knockback if enemy or spike is hit.
+            //{
+            //    Debug.Log(knockbackDirection.ToString());
+            //    rb.velocity = knockbackDirection * knockback;
+            //}
         }
 
         private void OnDrawGizmosSelected()

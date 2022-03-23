@@ -21,7 +21,8 @@ namespace Player
         [SerializeField]
         private int currentHealth;
 
-        private bool grounded, facingRight = true;
+        private bool grounded;
+        public bool facingRight = true;
         private Vector3 velocity = Vector3.zero;
         
         [Header("Movement variables")]
@@ -48,7 +49,6 @@ namespace Player
         void Start()
         {
             DontDestroyOnLoad(gameObject);
-            
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
 

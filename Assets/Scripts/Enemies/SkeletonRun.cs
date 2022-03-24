@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class Enemy1_Run : StateMachineBehaviour
+    public class SkeletonRun : StateMachineBehaviour
     {
         private Transform player;
         private Rigidbody2D rb;

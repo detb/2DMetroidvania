@@ -4,11 +4,14 @@ namespace CameraAndEffects
 {
     public class CameraFollowTarget : MonoBehaviour
     {
-        [SerializeField]
         private GameObject target;
         [SerializeField]
         private float pixelsPerUnit;
- 
+
+        void Start()
+        {
+            target = GameObject.Find("PlayerCam");
+        }
         void FixedUpdate()
         {
             transform.position = CameraClamp(target.transform.position);

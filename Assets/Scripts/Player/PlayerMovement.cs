@@ -8,7 +8,7 @@ namespace Player
             [SerializeField]
             private PlayerController controller;
             [SerializeField]
-            private float runSpeed = 40f;
+            private float runSpeed;
         
         
         private float horizontalMove = 0f;
@@ -30,6 +30,11 @@ namespace Player
         {
             controller.Move(horizontalMove * Time.deltaTime, jump);
             jump = false;
+        }
+
+        public float GetRunSpeed()
+        {
+            return runSpeed;
         }
     }
 }

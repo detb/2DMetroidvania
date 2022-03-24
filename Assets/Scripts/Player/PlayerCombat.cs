@@ -87,7 +87,7 @@ namespace Player
                 // find knockback direction
                 knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
                 enemyHit = true;
-                // When hitting spikes, other detection
+                
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
                 

@@ -9,8 +9,6 @@ namespace CameraAndEffects
         [SerializeField]
         private float parallaxFactor;
         [SerializeField]
-        private float playerspeed;
-        [SerializeField]
         private GameObject cam;
         void Start()
         {
@@ -37,23 +35,26 @@ namespace CameraAndEffects
         
         private void UpdateParallaxParticle()
         {
+            // Return if either there's no particle system or no player
             var parallaxSystem = GetComponent<ParticleSystem>();
-            if (parallaxSystem != null)
-            {
-                ParticleSystem.Particle[] particles = new ParticleSystem.Particle[parallaxSystem.particleCount];
-                int count = parallaxSystem.GetParticles(particles);
-                for (int i = 0; i < count; i++)
-                {
-                    // TODO: This can be implemented better, needs a thinker
-                    var pc = GameObject.Find("Player").GetComponent<PlayerController>();
-                    if(pc.facingRight)
-                        particles[i].velocity = new Vector3((+playerspeed / 20f),0, 0);
-                    else
-                        particles[i].velocity = new Vector3((-playerspeed / 20f),0, 0);
-                }
-                parallaxSystem.SetParticles(particles, count);
+            var player = GameObject.Find("Player");
+            if (player == null) return;
+            if (parallaxSystem == null) return;
 
-            }
+            // Get player controller to later find out if player is facing right or left
+            var playerController = player.GetComponent<PlayerController>();
+            var playerSpeed = player.GetComponent<PlayerMovement>().GetRunSpeed();
+
+            // Loop through particles and add or subtract the player speed, this way they will float nicely in the parallax background
+            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[parallaxSystem.particleCount];
+                int count = parallaxSystem.GetParticles(particles);
+                foreach (var p in particles)
+                {
+                    var particle = p;
+                    particle.velocity = playerController.IsPlayerFacingRight() ? new Vector3((+playerSpeed / 20f), 0, 0) : new Vector3((-playerSpeed / 20f), 0, 0);
+                }
+            parallaxSystem.SetParticles(particles, count);
         }
+        
     }
 }

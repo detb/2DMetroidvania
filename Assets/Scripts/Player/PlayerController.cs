@@ -21,8 +21,7 @@ namespace Player
         [SerializeField]
         private int currentHealth;
 
-        private bool grounded;
-        public bool facingRight = true;
+        private bool grounded, facingRight = true;
         private Vector3 velocity = Vector3.zero;
         
         [Header("Movement variables")]
@@ -178,6 +177,11 @@ namespace Player
             return grounded;
         }
 
+        public bool IsPlayerFacingRight()
+        {
+            return facingRight;
+        }
+
         public void TakeDamage(int damage)
         {
             playerAnimator.SetTrigger(Hit);
@@ -187,7 +191,7 @@ namespace Player
                 Die();
         }
         
-        // TODO: Make this work
+        // TODO: Make this work, now player gets destroyed, but there's no respawn
         void Die()
         {
             playerAnimator.SetBool(IsDead, true);

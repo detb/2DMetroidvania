@@ -87,6 +87,7 @@ namespace Player
                 // reset jump anim
                 playerAnimator.ResetTrigger(Jump);
                 playerAnimator.SetBool(Falling, false);
+                
             }
 
             if (grounded || airControl)
@@ -105,6 +106,7 @@ namespace Player
                     Flip();
                 else if (move < 0 && facingRight)
                     Flip();
+
             }
 
             // Double jump handling
@@ -199,6 +201,9 @@ namespace Player
             gameObject.layer = 12;
 
             Destroy(gameObject, 5f);
+
+            //Death Sound
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
             enabled = false;
         }
     }

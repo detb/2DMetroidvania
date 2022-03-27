@@ -79,6 +79,7 @@ namespace Enemies
 
             if (currentHealth <= 0)
                 Die();
+ 
         }
 
         // This method is used as an animation event in the enemy1Attack animation.
@@ -88,9 +89,18 @@ namespace Enemies
             // Detect enemy's in attacks range
             Collider2D playerHit = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
 
+            //Plays Skeleton attack sound, need if() to check when we get more enemies
+            FindObjectOfType<AudioManager>().Play("SkeletonAttack");
+
+
             // add damage
             if (playerHit != null)
+            {
                 playerHit.GetComponent<PlayerController>().TakeDamage(attackDamage);
+
+                //Plays player getting attacked if he gets hit
+                FindObjectOfType<AudioManager>().Play("PlayerHit");
+            }
         }
     
         void Die()
@@ -102,6 +112,8 @@ namespace Enemies
             EnemyDiedEvent();
 
             Destroy(gameObject, 5f);
+            //Plays Skeleton death sound, need if() to check when we get more enemies
+            FindObjectOfType<AudioManager>().Play("SkeletonDeath");
             enabled = false;
         }
 

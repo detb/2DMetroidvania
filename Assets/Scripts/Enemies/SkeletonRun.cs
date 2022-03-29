@@ -33,7 +33,6 @@ namespace Enemies
                 Vector2 newPos = Vector2.MoveTowards(position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
 
-
                 //Plays Skeleton walk sound, need if() to check when we get more enemies
                 //FindObjectOfType<AudioManager>().Play("SkeletonWalk");
                 //need to look at!

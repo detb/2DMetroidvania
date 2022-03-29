@@ -77,9 +77,17 @@ namespace Enemies
 
             enemyAnimator.SetTrigger(Hit);
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0) {
                 Die();
- 
+                //Plays Skeleton death sound, need if() to check when we get more enemies
+                FindObjectOfType<AudioManager>().Play("SkeletonDeath");
+            }else
+                //Skeleton sound for now! need to add if() or maybe different audiomangers for different enemies hit for more sounds!
+                FindObjectOfType<AudioManager>().Play("SkeletonHit");
+
+
+
+
         }
 
         // This method is used as an animation event in the enemy1Attack animation.
@@ -88,18 +96,13 @@ namespace Enemies
         {
             // Detect enemy's in attacks range
             Collider2D playerHit = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
-
+  
             //Plays Skeleton attack sound, need if() to check when we get more enemies
-            FindObjectOfType<AudioManager>().Play("SkeletonAttack");
-
-
+                FindObjectOfType<AudioManager>().Play("SkeletonAttack");
             // add damage
             if (playerHit != null)
             {
                 playerHit.GetComponent<PlayerController>().TakeDamage(attackDamage);
-
-                //Plays player getting attacked if he gets hit
-                FindObjectOfType<AudioManager>().Play("PlayerHit");
             }
         }
     
@@ -112,8 +115,6 @@ namespace Enemies
             EnemyDiedEvent();
 
             Destroy(gameObject, 5f);
-            //Plays Skeleton death sound, need if() to check when we get more enemies
-            FindObjectOfType<AudioManager>().Play("SkeletonDeath");
             enabled = false;
         }
 

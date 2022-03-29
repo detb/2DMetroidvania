@@ -189,8 +189,16 @@ namespace Player
             playerAnimator.SetTrigger(Hit);
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
+            
             if (currentHealth <= 0)
+            {
+                //Death Sound
+                FindObjectOfType<AudioManager>().Play("PlayerDeath");
                 Die();
+            }
+            else //Plays player getting attacked
+                FindObjectOfType<AudioManager>().Play("PlayerHit");
+
         }
         
         // TODO: Make this work, now player gets destroyed, but there's no respawn
@@ -202,8 +210,7 @@ namespace Player
 
             Destroy(gameObject, 5f);
 
-            //Death Sound
-            FindObjectOfType<AudioManager>().Play("PlayerDeath");
+           
             enabled = false;
         }
     }

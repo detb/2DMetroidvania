@@ -132,9 +132,6 @@ namespace Player
                 //enemyHit = true;
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
 
-                //Skeleton sound for now! need to add if() for different enemies hit for more sounds!
-                FindObjectOfType<AudioManager>().Play("SkeletonHit");
-
             } 
             
             //TODO: If enemy hit, add knockback..

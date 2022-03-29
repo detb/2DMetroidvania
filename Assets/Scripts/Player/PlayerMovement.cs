@@ -23,13 +23,17 @@ namespace Player
             {
                 jump = true;
             }
-
+            //Jump sound
+            if (jump) {
+                FindObjectOfType<AudioManager>().Play("PlayerJump");
+            }
         }
 
         private void FixedUpdate()
         {
             controller.Move(horizontalMove * Time.deltaTime, jump);
             jump = false;
+            
         }
 
         public float GetRunSpeed()

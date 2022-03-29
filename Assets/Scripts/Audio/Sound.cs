@@ -14,7 +14,9 @@ public class Sound
     [Range(.1f, 3f)]
     public float pitch;
 
+
     public bool loop;
+    public bool playOnAwake;
 
     [HideInInspector]
     public AudioSource source;

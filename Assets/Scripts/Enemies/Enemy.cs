@@ -1,3 +1,4 @@
+using Audio;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -81,7 +82,7 @@ namespace Enemies
                 Die();
                 //Plays Skeleton death sound, need if() to check when we get more enemies
                 FindObjectOfType<AudioManager>().Play("SkeletonDeath");
-            }else
+            } else
                 //Skeleton sound for now! need to add if() or maybe different audiomangers for different enemies hit for more sounds!
                 FindObjectOfType<AudioManager>().Play("SkeletonHit");
 

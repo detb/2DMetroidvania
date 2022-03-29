@@ -54,7 +54,8 @@ namespace Player
         void Update()
         {
             if (!(Time.time >= attackTime)) return;
-            if (!Input.GetButtonDown("Fire1")) return;
+            if (!Input.GetButtonDown("Fire1")) 
+                return;
             if (Input.GetAxisRaw("Vertical") > 0)
                 playerAnimator.SetTrigger(Attackupwards);
             if (Input.GetAxisRaw("Vertical") < 0 && !GetComponent<PlayerController>().IsPlayerGrounded())
@@ -65,6 +66,9 @@ namespace Player
             else
                 playerAnimator.SetTrigger(Attack1);
             attackTime = Time.time + 1f / attackSpeed;
+
+            //Player attacking with sword sound
+            FindObjectOfType<AudioManager>().Play("AttackSound");
 
         }
 
@@ -111,7 +115,9 @@ namespace Player
         }
         private void Attack()
         {
-            if (GetComponent<PlayerController>().IsFrozen()) return;
+            if (GetComponent<PlayerController>().IsFrozen())
+             return;
+           
             //bool enemyHit = false;
             //var knockbackDirection = Vector2.left;
             
@@ -125,6 +131,10 @@ namespace Player
                 //knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
                 //enemyHit = true;
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
+                //Skeleton sound for now! need to add if() for different enemies hit for more sounds!
+                FindObjectOfType<AudioManager>().Play("SkeletonHit");
+
             } 
             
             //TODO: If enemy hit, add knockback..

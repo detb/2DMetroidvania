@@ -27,10 +27,19 @@ namespace Player
                 case Upgrades.DoubleJump: 
                     player.extraJumpsValue = 2;
                     player.extraJumps = 2;
+
+                    //Plays cool sound for picking up new power
+                    FindObjectOfType<AudioManager>().Play("PowerPickup");
                     break;
-                case Upgrades.Dash: break;
-                case Upgrades.Coin: AddCoin(); break;
+                case Upgrades.Dash:
+                    //Plays cool sound for picking up new power
+                    FindObjectOfType<AudioManager>().Play("PowerPickup"); 
+                    break;
+                case Upgrades.Coin: AddCoin();
+                    //Plays coind sound when picking up coins
+                    FindObjectOfType<AudioManager>().Play("CoinPickup"); break;
             }
+
         }
 
         void Start()
@@ -44,6 +53,8 @@ namespace Player
         {
             playerCoins++;
             SetCountText();
+
+            
         }
 
         void SetCountText()

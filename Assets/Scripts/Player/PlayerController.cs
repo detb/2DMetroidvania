@@ -56,6 +56,8 @@ namespace Player
             extraJumps = extraJumpsValue;
             rigidBody2D = GetComponent<Rigidbody2D>();
             rigidBody2D.freezeRotation = true;
+            // Setting sleepmode to neversleep OnTriggerStay2D to keep registering player (for respawn point trigger)
+            rigidBody2D.sleepMode = RigidbodySleepMode2D.NeverSleep;
             playerAnimator = GetComponent<Animator>();
 
             if (OnLandEvent == null)
@@ -188,6 +190,7 @@ namespace Player
 
         public void TakeDamage(int damage)
         {
+            if (frozen) return;
             playerAnimator.SetTrigger(Hit);
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
@@ -204,6 +207,7 @@ namespace Player
         }
         
         // TODO: Respawns at point, needs animation that fades to black.
+        // TODO: Figure out how to return to old level if respawn point isn't in current level.
         void Die()
         {
             playerAnimator.SetBool(IsDead, true);
@@ -221,6 +225,7 @@ namespace Player
             transform.position = pi.GetRespawnPoint();
             pi.SetCoins(pi.GetCoins() / 2);
             currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
             Unfreeze();
             playerAnimator.SetBool(IsDead, false);
         }

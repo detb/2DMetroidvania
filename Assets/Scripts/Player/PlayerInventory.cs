@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Audio;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Player
 
 
         public TextMeshProUGUI countText;
+        public TextMeshProUGUI respawnHint;
+        public TextMeshProUGUI respawnSet;
         public enum Upgrades
         {
             DoubleJump, Dash, HeavyAttack, Coin, DamageLevelUp, WallJump
@@ -47,6 +50,8 @@ namespace Player
 
         void Start()
         {
+            respawnHint.enabled = false;
+            respawnSet.enabled = false;
             DontDestroyOnLoad(gameObject);
             player = GetComponent<PlayerController>();
             SetCountText();
@@ -79,7 +84,31 @@ namespace Player
         private void OnTriggerStay2D(Collider2D col)
         {
             if (!col.CompareTag("Respawn") || !Input.GetButton("Interact")) return;
+            StartCoroutine(DisplayHint(true));
             respawnPoint = transform.position;
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (!col.CompareTag("Respawn")) return;
+            StartCoroutine(DisplayHint(false));
+        }
+
+        private IEnumerator DisplayHint(bool activated)
+        {
+            if (!activated)
+            {
+                respawnHint.enabled = true;
+                yield return new WaitForSeconds(3f);
+                respawnHint.enabled = false;
+            }
+            else // hint doesn't work correctly yet. displays on top of another
+            {
+                respawnHint.enabled = false;
+                respawnSet.enabled = true;
+                yield return new WaitForSeconds(1.5f);
+                respawnSet.enabled = false;
+            }
         }
     }
 }

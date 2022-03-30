@@ -141,6 +141,11 @@ namespace Player
                 playerAnimator.SetBool(Falling, true);
         }
 
+        //Made only for walk sound
+        void Walk() {
+            FindObjectOfType<AudioManager>().Play("PlayerWalk");
+        }
+
         private void FixedUpdate()
         {
             if(frozen) return;

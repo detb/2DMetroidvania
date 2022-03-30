@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace Audio
-{
+
     public class AudioManager : MonoBehaviour {
         public Sound[] sounds;
 
         private void Awake()
         {
-            foreach(Sound s in sounds)
+        foreach (Sound s in sounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
@@ -21,10 +21,12 @@ namespace Audio
 
         private void Start()
         {
-            DontDestroyOnLoad(gameObject);
-            Play("AmbienceSounds");
-            Play("AmbienceMusic");
-        }
+
+        DontDestroyOnLoad(gameObject);
+                 
+                }
+    
+        
         public void Play(string name) 
         {
             Sound s = Array.Find(sounds, s => s.name == name);
@@ -36,4 +38,4 @@ namespace Audio
             Array.ForEach(sounds, s => s.source.volume = sliderValue);
         }
     }
-}
+

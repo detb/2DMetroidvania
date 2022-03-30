@@ -47,9 +47,16 @@ namespace Player
         private static readonly int Speed = Animator.StringToHash("speed");
         private static readonly int IsDead = Animator.StringToHash("isDead");
 
+        private static bool spawned = false;
+        void Awake(){
+            DontDestroyOnLoad (this);
+            if(spawned)     
+                Destroy(gameObject);
+            else        
+                spawned = true;
+        }
         void Start()
         {
-            DontDestroyOnLoad(gameObject);
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
 
@@ -212,7 +219,6 @@ namespace Player
         }
         
         // TODO: Respawns at point, needs animation that fades to black.
-        // TODO: Figure out how to return to old level if respawn point isn't in current level.
         void Die()
         {
             playerAnimator.SetBool(IsDead, true);
@@ -221,13 +227,13 @@ namespace Player
         
         IEnumerator Respawn()
         {
-            Freeze();
-            
-            yield return new WaitForSeconds(3f);
-            
             // Setting player position to respawn point, giving full health.
             var pi = GetComponent<PlayerInventory>();
+            GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevelAndRespawn(pi.GetRespawnIndex());
             transform.position = pi.GetRespawnPoint();
+            
+            yield return new WaitForSeconds(2f);
+
             pi.SetCoins(pi.GetCoins() / 2);
             currentHealth = maxHealth;
             healthBar.SetHealth(currentHealth);

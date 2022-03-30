@@ -5,9 +5,15 @@ namespace Audio
 {
     public class AudioManager : MonoBehaviour {
         public Sound[] sounds;
+        private static bool spawned = false;
 
         private void Awake()
         {
+            DontDestroyOnLoad (this);
+            if(spawned)     
+                Destroy(gameObject);
+            else        
+                spawned = true;
             foreach (Sound s in sounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
@@ -18,13 +24,6 @@ namespace Audio
                 s.source.playOnAwake = s.playOnAwake;
             }
         }
-
-        private void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    
-        
         public void Play(string name) 
         {
             Sound s = Array.Find(sounds, s => s.name == name);

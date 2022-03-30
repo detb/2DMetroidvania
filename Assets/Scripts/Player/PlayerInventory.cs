@@ -3,6 +3,7 @@ using System.Collections;
 using Audio;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -10,7 +11,8 @@ namespace Player
     {
         private static int playerCoins;
         private PlayerController player;
-        private Vector3 respawnPoint;
+        private Vector3 respawnPoint = new Vector3(-6.4f, 0, 1); // Start respawn point.
+        private int respawnIndex = 1;
 
 
         public TextMeshProUGUI countText;
@@ -81,10 +83,16 @@ namespace Player
         {
             return respawnPoint;
         }
+
+        public int GetRespawnIndex()
+        {
+            return respawnIndex;
+        }
         private void OnTriggerStay2D(Collider2D col)
         {
             if (!col.CompareTag("Respawn") || !Input.GetButton("Interact")) return;
             StartCoroutine(DisplayHint(true));
+            respawnIndex = SceneManager.GetActiveScene().buildIndex;
             respawnPoint = transform.position;
         }
 

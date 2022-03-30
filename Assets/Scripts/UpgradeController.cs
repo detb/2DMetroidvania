@@ -8,7 +8,13 @@ public class UpgradeController : MonoBehaviour
     private PlayerInventory player;
 
     public float floatStrength = 0.1f;
-
+    private static bool spawned = false;
+    void Awake(){
+        if(spawned && upgrade != PlayerInventory.Upgrades.Coin)     
+            Destroy(gameObject);
+        else        
+            spawned = true;
+    }
     void Start()
     {
         player = FindObjectOfType<PlayerInventory>();
@@ -18,12 +24,10 @@ public class UpgradeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (upgrade != PlayerInventory.Upgrades.Coin)
-        {
-            var position = transform.position;
-            position = new Vector3(position.x, originalY + ((float)Mathf.Sin(Time.time) * floatStrength), position.z);
-            transform.position = position;
-        }
+        if (upgrade == PlayerInventory.Upgrades.Coin) return;
+        var position = transform.position;
+        position = new Vector3(position.x, originalY + ((float)Mathf.Sin(Time.time) * floatStrength), position.z);
+        transform.position = position;
     }
 
     private void UpgradePlayer()

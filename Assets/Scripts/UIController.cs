@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private static bool spawned = false;
+    void Awake(){
+        DontDestroyOnLoad (this);
+        if(spawned)     
+            Destroy(gameObject);
+        else        
+            spawned = true;
     }
 }

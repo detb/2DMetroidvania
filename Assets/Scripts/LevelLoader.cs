@@ -16,15 +16,23 @@ public class LevelLoader : MonoBehaviour
 
     [SerializeField] private int levelIndex;
     
-    private static readonly int Start = Animator.StringToHash("start");
+    private static readonly int StartAnim = Animator.StringToHash("start");
     
     [Header("On new scene event")]
         [SerializeField] protected UnityEvent onNewSceneEvent;
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag("Player")) return;
-        pc = col.GetComponent<PlayerController>();
         LoadNextLevel();
+    }
+
+    void Start()
+    {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+    public void LoadLevelAndRespawn(int index)
+    {
+        StartCoroutine(LoadLevel(index));
     }
 
     private void LoadNextLevel()
@@ -35,7 +43,7 @@ public class LevelLoader : MonoBehaviour
     IEnumerator LoadLevel(int index)
     {
         pc.Freeze();
-        transition.SetTrigger(Start);
+        transition.SetTrigger(StartAnim);
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(index);

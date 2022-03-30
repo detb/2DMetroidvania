@@ -1,4 +1,3 @@
-using Audio;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -136,6 +135,11 @@ namespace Player
             // setting falling animation if y velocity is under -1
             if (rigidBody2D.velocity.y < -1)
                 playerAnimator.SetBool(Falling, true);
+        }
+
+        //Made only for walk sound
+        void Walk() {
+            FindObjectOfType<AudioManager>().Play("PlayerWalk");
         }
 
         private void FixedUpdate()

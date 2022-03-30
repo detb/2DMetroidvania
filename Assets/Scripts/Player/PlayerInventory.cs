@@ -1,3 +1,4 @@
+using System;
 using Audio;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Player
     {
         private static int playerCoins;
         private PlayerController player;
+        private Vector3 respawnPoint;
 
 
         public TextMeshProUGUI countText;
@@ -54,13 +56,30 @@ namespace Player
         {
             playerCoins++;
             SetCountText();
-
-            
         }
 
         void SetCountText()
         {
             countText.text = "" + playerCoins;
+        }
+
+        public void SetCoins(int amount)
+        {
+            playerCoins = amount;
+        }
+
+        public int GetCoins()
+        {
+            return playerCoins;
+        }
+        public Vector3 GetRespawnPoint()
+        {
+            return respawnPoint;
+        }
+        private void OnTriggerStay2D(Collider2D col)
+        {
+            if (!col.CompareTag("Respawn") || !Input.GetButton("Interact")) return;
+            respawnPoint = transform.position;
         }
     }
 }

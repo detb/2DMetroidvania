@@ -1,3 +1,4 @@
+using System.Collections;
 using Audio;
 using UnityEngine;
 using UnityEngine.Events;
@@ -202,17 +203,26 @@ namespace Player
 
         }
         
-        // TODO: Make this work, now player gets destroyed, but there's no respawn
+        // TODO: Respawns at point, needs animation that fades to black.
         void Die()
         {
             playerAnimator.SetBool(IsDead, true);
-
-            gameObject.layer = 12;
-
-            Destroy(gameObject, 5f);
-
-           
-            enabled = false;
+            StartCoroutine(Respawn());
+        }
+        
+        IEnumerator Respawn()
+        {
+            Freeze();
+            
+            yield return new WaitForSeconds(3f);
+            
+            // Setting player position to respawn point, giving full health.
+            var pi = GetComponent<PlayerInventory>();
+            transform.position = pi.GetRespawnPoint();
+            pi.SetCoins(pi.GetCoins() / 2);
+            currentHealth = maxHealth;
+            Unfreeze();
+            playerAnimator.SetBool(IsDead, false);
         }
     }
 }

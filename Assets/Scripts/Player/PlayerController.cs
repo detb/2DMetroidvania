@@ -1,3 +1,5 @@
+using System.Collections;
+using Audio;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,15 +47,24 @@ namespace Player
         private static readonly int Speed = Animator.StringToHash("speed");
         private static readonly int IsDead = Animator.StringToHash("isDead");
 
+        private static bool spawned = false;
+        void Awake(){
+            DontDestroyOnLoad (this);
+            if(spawned)     
+                Destroy(gameObject);
+            else        
+                spawned = true;
+        }
         void Start()
         {
-            DontDestroyOnLoad(gameObject);
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
 
             extraJumps = extraJumpsValue;
             rigidBody2D = GetComponent<Rigidbody2D>();
             rigidBody2D.freezeRotation = true;
+            // Setting sleepmode to neversleep OnTriggerStay2D to keep registering player (for respawn point trigger)
+            rigidBody2D.sleepMode = RigidbodySleepMode2D.NeverSleep;
             playerAnimator = GetComponent<Animator>();
 
             if (OnLandEvent == null)
@@ -191,6 +202,7 @@ namespace Player
 
         public void TakeDamage(int damage)
         {
+            if (frozen) return;
             playerAnimator.SetTrigger(Hit);
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
@@ -206,17 +218,27 @@ namespace Player
 
         }
         
-        // TODO: Make this work, now player gets destroyed, but there's no respawn
+        // TODO: Respawns at point, needs animation that fades to black.
         void Die()
         {
             playerAnimator.SetBool(IsDead, true);
+            StartCoroutine(Respawn());
+        }
+        
+        IEnumerator Respawn()
+        {
+            // Setting player position to respawn point, giving full health.
+            var pi = GetComponent<PlayerInventory>();
+            GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevelAndRespawn(pi.GetRespawnIndex());
+            transform.position = pi.GetRespawnPoint();
+            
+            yield return new WaitForSeconds(2f);
 
-            gameObject.layer = 12;
-
-            Destroy(gameObject, 5f);
-
-           
-            enabled = false;
+            pi.SetCoins(pi.GetCoins() / 2);
+            currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
+            Unfreeze();
+            playerAnimator.SetBool(IsDead, false);
         }
     }
 }

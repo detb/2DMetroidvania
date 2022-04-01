@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
+using Audio;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -7,9 +11,13 @@ namespace Player
     {
         private static int playerCoins;
         private PlayerController player;
+        private Vector3 respawnPoint = new Vector3(-6.4f, 0, 1); // Start respawn point.
+        private int respawnIndex = 1;
 
 
         public TextMeshProUGUI countText;
+        public TextMeshProUGUI respawnHint;
+        public TextMeshProUGUI respawnSet;
         public enum Upgrades
         {
             DoubleJump, Dash, HeavyAttack, Coin, DamageLevelUp, WallJump
@@ -44,6 +52,8 @@ namespace Player
 
         void Start()
         {
+            respawnHint.enabled = false;
+            respawnSet.enabled = false;
             DontDestroyOnLoad(gameObject);
             player = GetComponent<PlayerController>();
             SetCountText();
@@ -53,13 +63,60 @@ namespace Player
         {
             playerCoins++;
             SetCountText();
-
-            
         }
 
         void SetCountText()
         {
             countText.text = "" + playerCoins;
+        }
+
+        public void SetCoins(int amount)
+        {
+            playerCoins = amount;
+        }
+
+        public int GetCoins()
+        {
+            return playerCoins;
+        }
+        public Vector3 GetRespawnPoint()
+        {
+            return respawnPoint;
+        }
+
+        public int GetRespawnIndex()
+        {
+            return respawnIndex;
+        }
+        private void OnTriggerStay2D(Collider2D col)
+        {
+            if (!col.CompareTag("Respawn") || !Input.GetButton("Interact")) return;
+            StartCoroutine(DisplayHint(true));
+            respawnIndex = SceneManager.GetActiveScene().buildIndex;
+            respawnPoint = transform.position;
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (!col.CompareTag("Respawn")) return;
+            StartCoroutine(DisplayHint(false));
+        }
+
+        private IEnumerator DisplayHint(bool activated)
+        {
+            if (!activated)
+            {
+                respawnHint.enabled = true;
+                yield return new WaitForSeconds(3f);
+                respawnHint.enabled = false;
+            }
+            else // hint doesn't work correctly yet. displays on top of another
+            {
+                respawnHint.enabled = false;
+                respawnSet.enabled = true;
+                yield return new WaitForSeconds(1.5f);
+                respawnSet.enabled = false;
+            }
         }
     }
 }

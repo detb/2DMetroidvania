@@ -2,15 +2,22 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+namespace Audio
+{
     public class AudioManager : MonoBehaviour {
         public Sound[] sounds;
+        private static bool spawned = false;
 
        private int sm;
         
         private void Awake()
         {
-        foreach (Sound s in sounds)
+            DontDestroyOnLoad (this);
+            if(spawned)     
+                Destroy(gameObject);
+            else        
+                spawned = true;
+            foreach (Sound s in sounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
@@ -52,4 +59,5 @@ using UnityEngine.SceneManagement;
             Array.ForEach(sounds, s => s.source.volume = sliderValue);
         }
     }
+}
 

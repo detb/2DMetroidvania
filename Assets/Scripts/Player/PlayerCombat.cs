@@ -1,5 +1,6 @@
 using Enemies;
 using UnityEngine;
+using Audio;
 
 namespace Player
 {

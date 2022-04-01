@@ -1,4 +1,3 @@
-using Audio;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -142,6 +141,11 @@ namespace Enemies
                 transform.Rotate(0f, 180f, 0f);
                 isFlipped = true;
             }
+        }
+
+        //Made for walk sounds only
+        void Walk() {
+            FindObjectOfType<AudioManager>().Play("SkeletonWalk");
         }
 
         private void OnDrawGizmosSelected()

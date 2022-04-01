@@ -36,6 +36,11 @@ namespace Player
             
         }
 
+        //Made only for player walk sound
+        void Walk() {
+            FindObjectOfType<AudioManager>().Play("PlayerWalk");
+        }
+
         public float GetRunSpeed()
         {
             return runSpeed;

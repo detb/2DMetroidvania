@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
     public class AudioManager : MonoBehaviour {
         public Sound[] sounds;
 
+       private int sm;
+        
         private void Awake()
         {
         foreach (Sound s in sounds)
@@ -21,10 +23,22 @@ using UnityEngine.SceneManagement;
 
         private void Start()
         {
-
         DontDestroyOnLoad(gameObject);
-                 
-                }
+
+            switch (SceneManager.GetActiveScene().buildIndex)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("MenuMusic");
+                    break;
+
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("ForestMusic");
+                    FindObjectOfType<AudioManager>().Play("Forest");
+                    break;
+        }
+
+
+    }
     
         
         public void Play(string name) 

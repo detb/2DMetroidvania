@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 49e0a0f83b0dee74c880cde031c6491f
+guid: 8a382a02b057cc5459de2b3fef934a53
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7148142373236564458
-    second: backgroundparralax 1
+      213: 5506582151827964203
+    second: forestparallax_0
   - first:
-      213: 4196078344719960844
-    second: backgroundparralax 2
+      213: 7403839551352451156
+    second: forestparallax_1
   - first:
-      213: 3190342392318164814
-    second: backgroundparralax 3
+      213: -6027274881004001462
+    second: forestparallax_2
   - first:
-      213: -5541419421659448630
-    second: backgroundparralax 4
+      213: -6105419463410220055
+    second: forestparallax_3
   - first:
-      213: -1045257940876240937
-    second: backgroundparralax 5
-  - first:
-      213: 8728138157517343356
-    second: backgroundparralax 6
+      213: -6589441856218843360
+    second: forestparallax_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,127 +106,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: backgroundparralax 1
+      name: forestparallax_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1760
+        y: 2112
         width: 640
-        height: 352
+        height: 528
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae1eea0bd9d433360800000000000000
-      internalID: 7148142373236564458
+      spriteID: b21463eba4f4b6c40800000000000000
+      internalID: 5506582151827964203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backgroundparralax 2
+      name: forestparallax_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 1408
+        y: 1584
         width: 640
-        height: 352
+        height: 528
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0b0eb2d5077b3a30800000000000000
-      internalID: 4196078344719960844
+      spriteID: 450b95048d8bfb660800000000000000
+      internalID: 7403839551352451156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backgroundparralax 3
+      name: forestparallax_2
       rect:
         serializedVersion: 2
         x: 0
         y: 1056
         width: 640
-        height: 352
+        height: 528
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4f7efda08f564c20800000000000000
-      internalID: 3190342392318164814
+      spriteID: a472f1afd61da5ca0800000000000000
+      internalID: -6027274881004001462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backgroundparralax 4
+      name: forestparallax_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 704
+        y: 528
         width: 640
-        height: 352
+        height: 528
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acab98c456ce813b0800000000000000
-      internalID: -5541419421659448630
+      spriteID: 9e38dae8851354ba0800000000000000
+      internalID: -6105419463410220055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backgroundparralax 5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 352
-        width: 640
-        height: 352
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d75a67d07f7e71f0800000000000000
-      internalID: -1045257940876240937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: backgroundparralax 6
+      name: forestparallax_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 640
-        height: 352
+        height: 528
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a8a5d1963902970800000000000000
-      internalID: 8728138157517343356
+      spriteID: 0273cfb4b899d84a0800000000000000
+      internalID: -6589441856218843360
       vertices: []
       indices: 
       edges: []

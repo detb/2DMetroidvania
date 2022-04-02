@@ -222,7 +222,6 @@ namespace Player
 
         }
         
-        // TODO: Respawns at point, needs animation that fades to black.
         void Die()
         {
             StartCoroutine(Respawn());

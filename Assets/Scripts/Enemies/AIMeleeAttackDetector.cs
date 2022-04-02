@@ -9,7 +9,6 @@ namespace Enemies
         private LayerMask targetLayer;
 
         public UnityEvent<GameObject> OnPlayerDetected;
-        public Vector2 detectorOriginOffset = Vector2.zero;
 
         [SerializeField]
         [Range(.1f, 1)]

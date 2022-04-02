@@ -40,7 +40,7 @@ namespace Audio
 
                 case 1:
                     FindObjectOfType<AudioManager>().Play("ForestMusic");
-                    FindObjectOfType<AudioManager>().Play("Forest");
+                    FindObjectOfType<AudioManager>().Play("ForestAmbience");
                     break;
         }
 

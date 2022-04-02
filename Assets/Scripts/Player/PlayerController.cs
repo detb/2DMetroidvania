@@ -1,5 +1,6 @@
 using System.Collections;
 using Audio;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -39,6 +40,8 @@ namespace Player
 
         [Header("On land event")]
             [SerializeField] protected UnityEvent OnLandEvent;
+        
+        public GameObject deathScreen;
 
         // Static triggers/bools/values for animations hashed
         private static readonly int Jump = Animator.StringToHash("jump");
@@ -57,6 +60,7 @@ namespace Player
         }
         void Start()
         {
+            deathScreen.SetActive(false);
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
 
@@ -221,24 +225,36 @@ namespace Player
         // TODO: Respawns at point, needs animation that fades to black.
         void Die()
         {
-            playerAnimator.SetBool(IsDead, true);
             StartCoroutine(Respawn());
         }
-        
+
         IEnumerator Respawn()
         {
-            // Setting player position to respawn point, giving full health.
+            // Freeze player, set it to dead layer, start animation, set deathScreen
+            deathScreen.SetActive(true);
+            frozen = true;
+            gameObject.layer = 12;
+            playerAnimator.SetBool(IsDead, true);
+            
+            yield return new WaitForSeconds(4f);
+            
+            // Start respawn transition
             var pi = GetComponent<PlayerInventory>();
             GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevelAndRespawn(pi.GetRespawnIndex());
-            transform.position = pi.GetRespawnPoint();
-            
-            yield return new WaitForSeconds(2f);
 
+            yield return new WaitForSeconds(2f);
+            
+            // Setting player position to respawn point, giving full health, removing coins.
+            transform.position = pi.GetRespawnPoint();
             pi.SetCoins(pi.GetCoins() / 2);
             currentHealth = maxHealth;
             healthBar.SetHealth(currentHealth);
-            Unfreeze();
+            
+            // Unfreeze player, set it to player layer, stop animation, remove deathScreen
+            deathScreen.SetActive(false);
             playerAnimator.SetBool(IsDead, false);
+            gameObject.layer = 10;
+            Unfreeze();
         }
     }
 }

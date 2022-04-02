@@ -95,6 +95,7 @@ namespace Enemies
         // To check if the player is hit at the right moment in the animation
         void Attack()
         {
+            LookAtPlayer();
             // Detect enemy's in attacks range
             Collider2D playerHit = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
   

@@ -229,7 +229,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06}
+  m_Offset: {x: 0, y: -0.056101024}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.35, y: 0.35}
@@ -240,7 +240,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18919897, y: 0.54569733}
+  m_Size: {x: 0.18919897, y: 0.5378994}
   m_EdgeRadius: 0
 --- !u!58 &2704329498952583752
 CircleCollider2D:
@@ -255,7 +255,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.2}
+  m_Offset: {x: 0, y: 0.17}
   serializedVersion: 2
   m_Radius: 0.1
 --- !u!95 &2704329498952583759
@@ -346,7 +346,6 @@ MonoBehaviour:
   OnPlayerDetected:
     m_PersistentCalls:
       m_Calls: []
-  detectorOriginOffset: {x: 3.42, y: 4.36}
   radius: 0.634
   playerDetected: 0
   gizmoIdleColor: {r: 0.95075846, g: 0, b: 1, a: 0.39215687}

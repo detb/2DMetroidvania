@@ -8,7 +8,6 @@ namespace Audio
         public Sound[] sounds;
         private static bool spawned = false;
 
-       private int sm;
         
         private void Awake()
         {
@@ -31,8 +30,12 @@ namespace Audio
         private void Start()
         {
         DontDestroyOnLoad(gameObject);
-
-            switch (SceneManager.GetActiveScene().buildIndex)
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
+        }
+    
+        public void PlayLevelMusic(int level)
+        {
+            switch (level)
             {
                 case 0:
                     FindObjectOfType<AudioManager>().Play("MenuMusic");
@@ -40,18 +43,39 @@ namespace Audio
 
                 case 1:
                     FindObjectOfType<AudioManager>().Play("ForestMusic");
-                    FindObjectOfType<AudioManager>().Play("Forest");
+                    FindObjectOfType<AudioManager>().Play("ForestAmbience");
                     break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("CaveAmbience");
+                    break;
+            }
+        }
+        
+        public void StopLevelMusic(int prevLevel)
+        {
+            switch (prevLevel)
+            {
+                case 1:
+                    FindObjectOfType<AudioManager>().Stop("ForestMusic");
+                    FindObjectOfType<AudioManager>().Stop("ForestAmbience");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Stop("CaveAmbience");
+                    break;
+            }
         }
 
-
-    }
-    
-        
         public void Play(string name) 
         {
             Sound s = Array.Find(sounds, s => s.name == name);
             s.source.Play();
+          
+        }
+
+        public void Stop(string name)
+        {
+            Sound s = Array.Find(sounds, s => s.name == name);
+            s.source.Stop();
         }
 
         public void SetLevel(float sliderValue)

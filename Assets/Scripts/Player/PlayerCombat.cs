@@ -54,6 +54,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            if (GetComponent<PlayerController>().IsFrozen()) return;
             if (!(Time.time >= attackTime)) return;
             if (!Input.GetButtonDown("Fire1")) 
                 return;
@@ -116,9 +117,6 @@ namespace Player
         }
         private void Attack()
         {
-            if (GetComponent<PlayerController>().IsFrozen())
-             return;
-           
             //bool enemyHit = false;
             //var knockbackDirection = Vector2.left;
             

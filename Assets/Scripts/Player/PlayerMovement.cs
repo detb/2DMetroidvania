@@ -32,6 +32,7 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if(controller.IsFrozen()) return;
             controller.Move(horizontalMove * Time.deltaTime, jump);
             jump = false;
             

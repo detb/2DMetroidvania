@@ -7,8 +7,7 @@ namespace Audio
     public class AudioManager : MonoBehaviour {
         public Sound[] sounds;
         private static bool spawned = false;
-
-       private int sm;
+        private int prevLevel = 0;
         
         private void Awake()
         {
@@ -31,27 +30,55 @@ namespace Audio
         private void Start()
         {
         DontDestroyOnLoad(gameObject);
-
-            switch (SceneManager.GetActiveScene().buildIndex)
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
+        }
+    
+        public void PlayLevelMusic(int level)
+        {
+            prevLevel = level;
+            switch (level)
             {
                 case 0:
                     FindObjectOfType<AudioManager>().Play("MenuMusic");
                     break;
-
                 case 1:
                     FindObjectOfType<AudioManager>().Play("ForestMusic");
                     FindObjectOfType<AudioManager>().Play("ForestAmbience");
                     break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("CaveAmbience");
+                    break;
+            }
+        }
+        
+        public void StopLevelMusic()
+        {
+            switch (prevLevel)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Stop("MenuMusic");
+                    break;
+                case 1:
+                    FindObjectOfType<AudioManager>().Stop("ForestMusic");
+                    FindObjectOfType<AudioManager>().Stop("ForestAmbience");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Stop("CaveAmbience");
+                    break;
+            }
         }
 
-
-    }
-    
-        
         public void Play(string name) 
         {
             Sound s = Array.Find(sounds, s => s.name == name);
             s.source.Play();
+          
+        }
+
+        public void Stop(string name)
+        {
+            Sound s = Array.Find(sounds, s => s.name == name);
+            s.source.Stop();
         }
 
         public void SetLevel(float sliderValue)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,7 +14,6 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private float transitionTime = 1f;
     private PlayerController pc;
-
     [SerializeField] private int levelIndex;
     
     private static readonly int StartAnim = Animator.StringToHash("start");
@@ -42,12 +42,17 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadLevel(int index)
     {
+        var am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         pc.Freeze();
+        am.StopLevelMusic();
+        
         transition.SetTrigger(StartAnim);
         yield return new WaitForSeconds(transitionTime);
-
+        
         SceneManager.LoadScene(index);
+        am.PlayLevelMusic(index);
         pc.Unfreeze();
+
     }
     
     

@@ -227,6 +227,7 @@ namespace Player
             StartCoroutine(Respawn());
         }
 
+        // TODO: don't set gravityscale to 0 and reset it. find other way.
         IEnumerator Respawn()
         {
             // Freeze player, set it to dead layer, start animation, set deathScreen
@@ -240,11 +241,12 @@ namespace Player
             // Start respawn transition
             var pi = GetComponent<PlayerInventory>();
             GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevelAndRespawn(pi.GetRespawnIndex());
-
+            rigidBody2D.gravityScale = 0f;
+            transform.position = pi.GetRespawnPoint();
             yield return new WaitForSeconds(2f);
             
             // Setting player position to respawn point, giving full health, removing coins.
-            transform.position = pi.GetRespawnPoint();
+            rigidBody2D.gravityScale = 2.25f;
             pi.SetCoins(pi.GetCoins() / 2);
             currentHealth = maxHealth;
             healthBar.SetHealth(currentHealth);

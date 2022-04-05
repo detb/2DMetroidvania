@@ -24,11 +24,19 @@ namespace Player
             {
                 jump = true;
             }
-            //Jump sound
-            if (jump) {
-                FindObjectOfType<AudioManager>().Play("PlayerJump");
-            }
         }
+
+
+        // Jump and land sounds
+        void Jump() {
+            FindObjectOfType<AudioManager>().Play("PlayerJump");
+        }
+
+        void Land() {
+            FindObjectOfType<AudioManager>().Play("PlayerLand");
+        }
+
+
 
         private void FixedUpdate()
         {

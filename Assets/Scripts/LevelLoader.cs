@@ -50,7 +50,7 @@ public class LevelLoader : MonoBehaviour
         pc.Freeze();
         transition.SetTrigger(StartAnim);
         yield return new WaitForSeconds(transitionTime);
-
+        print(prevLevel);
         var am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         am.StopLevelMusic(prevLevel);
         PreviousLevel(index);

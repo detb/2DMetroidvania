@@ -37,10 +37,6 @@ namespace Audio
         {
             switch (level)
             {
-                case 0:
-                    FindObjectOfType<AudioManager>().Play("MenuMusic");
-                    break;
-
                 case 1:
                     FindObjectOfType<AudioManager>().Play("ForestMusic");
                     FindObjectOfType<AudioManager>().Play("ForestAmbience");

@@ -26,18 +26,6 @@ namespace Player
             }
         }
 
-
-        // Jump and land sounds
-        void Jump() {
-            FindObjectOfType<AudioManager>().Play("PlayerJump");
-        }
-
-        void Land() {
-            FindObjectOfType<AudioManager>().Play("PlayerLand");
-        }
-
-
-
         private void FixedUpdate()
         {
             if(controller.IsFrozen()) return;
@@ -46,14 +34,27 @@ namespace Player
             
         }
 
-        //Made only for player walk sound
-        void Walk() {
-            FindObjectOfType<AudioManager>().Play("PlayerWalk");
-        }
-
         public float GetRunSpeed()
         {
             return runSpeed;
         }
+
+        //Made only for sound
+        void Walk()
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerWalk");
+        }
+
+        void Jump()
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerJump");
+        }
+
+        void Land()
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerLand");
+        }
+
+
     }
 }

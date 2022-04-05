@@ -8,9 +8,9 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        FindObjectOfType<AudioManager>().Stop("MenuMusic");
-        FindObjectOfType<AudioManager>().Play("ForestMusic");
-        FindObjectOfType<AudioManager>().Play("ForestAmbience");
+        var am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        am.StopLevelMusic();
+        am.PlayLevelMusic(1);
     }
     
     public void QuitGame()

@@ -7,7 +7,7 @@ namespace Audio
     public class AudioManager : MonoBehaviour {
         public Sound[] sounds;
         private static bool spawned = false;
-
+        private int prevLevel = 0;
         
         private void Awake()
         {
@@ -35,6 +35,7 @@ namespace Audio
     
         public void PlayLevelMusic(int level)
         {
+            prevLevel = level;
             switch (level)
             {
                 case 1:
@@ -47,10 +48,13 @@ namespace Audio
             }
         }
         
-        public void StopLevelMusic(int prevLevel)
+        public void StopLevelMusic()
         {
             switch (prevLevel)
             {
+                case 0:
+                    FindObjectOfType<AudioManager>().Stop("MenuMusic");
+                    break;
                 case 1:
                     FindObjectOfType<AudioManager>().Stop("ForestMusic");
                     FindObjectOfType<AudioManager>().Stop("ForestAmbience");

@@ -10,7 +10,7 @@ public class UpgradeController : MonoBehaviour
     public float floatStrength = 0.1f;
     private static bool spawned = false;
     void Awake(){
-        if(spawned && upgrade != PlayerInventory.Upgrades.Coin)     
+        if(spawned && upgrade != PlayerInventory.Upgrades.Coin && FindObjectOfType<PlayerInventory>().HasUpgrade(upgrade))
             Destroy(gameObject);
         else        
             spawned = true;

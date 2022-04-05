@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Audio;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Player
         private PlayerController player;
         private Vector3 respawnPoint = new Vector3(-6.4f, 0, 1); // Start respawn point.
         private int respawnIndex = 1;
-
+        private List<Upgrades> playerUpgrades = new List<Upgrades>();
 
         public TextMeshProUGUI countText;
         public TextMeshProUGUI respawnHint;
@@ -26,7 +27,12 @@ namespace Player
         // Nothing in this for now, might be useful later?
         public bool HasUpgrade(Upgrades upgrade)
         {
-            return true;
+            foreach (var upg in playerUpgrades)
+            {
+                if (upg == upgrade)
+                    return true;
+            }
+            return false;
         }
         public void UpgradePlayer(Upgrades upgrade)
         {
@@ -35,11 +41,14 @@ namespace Player
                 case Upgrades.DoubleJump: 
                     player.extraJumpsValue = 2;
                     player.extraJumps = 2;
-
+                    // Add upgrade to list of upgrades player has.
+                    playerUpgrades.Add(Upgrades.DoubleJump);
                     //Plays cool sound for picking up new power
                     FindObjectOfType<AudioManager>().Play("PowerPickup");
                     break;
                 case Upgrades.Dash:
+                    // Add upgrade to list of upgrades player has.
+                    playerUpgrades.Add(Upgrades.Dash);
                     //Plays cool sound for picking up new power
                     FindObjectOfType<AudioManager>().Play("PowerPickup"); 
                     break;

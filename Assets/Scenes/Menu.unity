@@ -463,7 +463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785321889080329657, guid: 076033804043e164980bf839b3516140, type: 3}
       propertyPath: sounds.Array.data[17].volume
-      value: 0.554
+      value: 0.187
       objectReference: {fileID: 0}
     - target: {fileID: 3785321889080329670, guid: 076033804043e164980bf839b3516140, type: 3}
       propertyPath: m_Name
@@ -752,6 +752,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298638444}
   m_CullTransparentMesh: 1
+--- !u!114 &302988162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3785321889080329657, guid: 076033804043e164980bf839b3516140, type: 3}
+  m_PrefabInstance: {fileID: 243411925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7123677b68ebb48b3865465989e8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419734667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2131,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 302988162}
         m_TargetAssemblyTypeName: Audio.AudioManager, Assembly-CSharp
         m_MethodName: SetLevel
         m_Mode: 0

@@ -10,6 +10,8 @@ public class SpikeController : MonoBehaviour
 
     void Start()
     {
+        // Setting sleepmode to neversleep, to register hit better.
+        GetComponent<Rigidbody2D>().sleepMode = RigidbodySleepMode2D.NeverSleep;
         player = FindObjectOfType<PlayerController>();
     }
 

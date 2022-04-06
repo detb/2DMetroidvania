@@ -253,4 +253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 2021453290911431185}
-  transitionTime: 1
+  transitionTime: 2
+  levelIndex: 1
+  nextLevelPosition: {x: 0, y: 0, z: 0}
+  onNewSceneEvent:
+    m_PersistentCalls:
+      m_Calls: []

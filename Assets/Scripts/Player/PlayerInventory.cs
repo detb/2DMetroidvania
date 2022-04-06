@@ -12,7 +12,7 @@ namespace Player
     {
         private static int playerCoins;
         private PlayerController player;
-        private Vector3 respawnPoint = new Vector3(-6.4f, 0, 1); // Start respawn point.
+        private Vector3 respawnPoint = new Vector3(-2.5f, 0, 1); // Start respawn point.
         private int respawnIndex = 1;
         private List<Upgrades> playerUpgrades = new List<Upgrades>();
 

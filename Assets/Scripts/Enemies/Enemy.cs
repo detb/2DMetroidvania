@@ -80,11 +80,7 @@ namespace Enemies
 
             if (currentHealth <= 0) {
                 Die();
-                //Plays Skeleton death sound, need if() to check when we get more enemies
-                FindObjectOfType<AudioManager>().Play("SkeletonDeath");
-            } else
-                //Skeleton sound for now! need to add if() or maybe different audiomangers for different enemies hit for more sounds!
-                FindObjectOfType<AudioManager>().Play("SkeletonHit");
+            } 
 
 
 
@@ -99,8 +95,6 @@ namespace Enemies
             // Detect enemy's in attacks range
             Collider2D playerHit = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
   
-            //Plays Skeleton attack sound, need if() to check when we get more enemies
-                FindObjectOfType<AudioManager>().Play("SkeletonAttack");
             // add damage
             if (playerHit != null)
             {
@@ -145,16 +139,62 @@ namespace Enemies
             }
         }
 
-        //Made for walk sounds only
-        void Walk() {
-            FindObjectOfType<AudioManager>().Play("SkeletonWalk");
-        }
 
         private void OnDrawGizmosSelected()
         {
             if (attackPoint == null)
                 return;
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        }
+
+        //Made for enemy sounds only
+        void SkeletonWalk()
+        {
+            FindObjectOfType<AudioManager>().Play("SkeletonWalk");
+        }
+
+        void SkeletonAttack()
+        {
+            FindObjectOfType<AudioManager>().Play("SkeletonAttack");
+        }
+
+        void SkeletonDeath() 
+        {
+            FindObjectOfType<AudioManager>().Play("SkeletonDeath");
+        }
+
+        void SkeletonHit()
+        {
+            FindObjectOfType<AudioManager>().Play("SkeletonHit");
+        }
+        void GoblinWalk()
+        {
+            FindObjectOfType<AudioManager>().Play("GoblinWalk");
+        }
+
+        void GoblinAttack()
+        {
+            FindObjectOfType<AudioManager>().Play("GoblinAttack");
+        }
+
+        void GoblinDeath()
+        {
+            FindObjectOfType<AudioManager>().Play("GoblinDeath");
+        }
+
+        void BlobAttack()
+        {
+            FindObjectOfType<AudioManager>().Play("BlobAttack");
+        }
+
+        void BlobDeath()
+        {
+            FindObjectOfType<AudioManager>().Play("BlobDeath");
+        }
+
+        void BlobHit()
+        {
+            FindObjectOfType<AudioManager>().Play("BlobHit");
         }
     }
 }

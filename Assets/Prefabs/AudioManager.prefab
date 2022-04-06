@@ -81,7 +81,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PlayerWalk
     clip: {fileID: 8300000, guid: a6d102c061fd369439c780c6fdf77872, type: 3}
-    volume: 1
+    volume: 0.566
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -168,5 +168,61 @@ MonoBehaviour:
     volume: 0.187
     pitch: 1
     loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Shrine
+    clip: {fileID: 8300000, guid: 7588969fd51809348b8c4ff5885336ce, type: 3}
+    volume: 0.513
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: CaveAmbience
+    clip: {fileID: 8300000, guid: 9b1b674ab1ef404428333c5457760760, type: 3}
+    volume: 0.513
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: GoblinWalk
+    clip: {fileID: 8300000, guid: 4b0eb50277abbbf45b54d6be64d86f8c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: GoblinAttack
+    clip: {fileID: 8300000, guid: e1283a4e13951ea4eb66a65c7f93e8f7, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: GoblinDeath
+    clip: {fileID: 8300000, guid: 33cd2c98e9c8a084c96d41b8c48b82ff, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BlobDeath
+    clip: {fileID: 8300000, guid: 64bfef67d2e06874e93abc49d1d5b869, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BlobHit
+    clip: {fileID: 8300000, guid: 1d00657f192238542b86c5ab5a2e8ffb, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BlobAttack
+    clip: {fileID: 8300000, guid: 1dd6610792ecbc74fbae4ddaabb5d4d4, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
     playOnAwake: 0
     source: {fileID: 0}

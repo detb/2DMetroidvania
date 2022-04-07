@@ -163,11 +163,11 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
-  - name: PlayerLand
-    clip: {fileID: 8300000, guid: 8745660945331554792e29179fe1082a, type: 3}
-    volume: 0.513
+  - name: CaveAmbience
+    clip: {fileID: 8300000, guid: 9b1b674ab1ef404428333c5457760760, type: 3}
+    volume: 0.187
     pitch: 1
-    loop: 0
+    loop: 1
     playOnAwake: 0
     source: {fileID: 0}
   - name: Shrine

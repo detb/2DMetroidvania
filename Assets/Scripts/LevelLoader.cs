@@ -38,6 +38,7 @@ public class LevelLoader : MonoBehaviour
     private void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(levelIndex));
+        FindObjectOfType<AudioManager>().Play("LevelTransition");
     }
 
     IEnumerator LoadLevel(int index)

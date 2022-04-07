@@ -292,7 +292,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  maxHealth: 150
+  maxHealth: 100
   isFlipped: 1
   attackPoint: {fileID: 2704329497343260067}
   attackRange: 0.23

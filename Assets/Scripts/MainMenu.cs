@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         var am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         am.StopLevelMusic();
         am.PlayLevelMusic(1);
+        am.Play("Play");
     }
     
     public void QuitGame()

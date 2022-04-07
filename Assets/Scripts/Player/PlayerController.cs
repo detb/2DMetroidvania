@@ -61,9 +61,7 @@ namespace Player
         void Start()
         {
             deathScreen.SetActive(false);
-            currentHealth = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
-
+            HealPlayer();
             extraJumps = extraJumpsValue;
             rigidBody2D = GetComponent<Rigidbody2D>();
             rigidBody2D.freezeRotation = true;
@@ -155,6 +153,13 @@ namespace Player
         //Made only for walk sound
         void Walk() {
             FindObjectOfType<AudioManager>().Play("PlayerWalk");
+        }
+
+        //Used for healing player on shrines and spawns
+        public void HealPlayer()
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
         }
 
         private void FixedUpdate()
@@ -262,7 +267,7 @@ namespace Player
             
             // Setting player position to respawn point, giving full health, removing coins.
             pi.SetCoins(pi.GetCoins() / 2);
-            currentHealth = maxHealth;
+            HealPlayer(); 
             healthBar.SetHealth(currentHealth);
             
             // Unfreeze player, set it to player layer, stop animation, remove deathScreen

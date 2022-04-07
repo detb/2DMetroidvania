@@ -41,6 +41,7 @@ public class LevelLoader : MonoBehaviour
     private void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(levelIndex));
+        FindObjectOfType<AudioManager>().Play("LevelTransition");
         Invoke(nameof(SetPositionAfterWait), 2f);
     }
 

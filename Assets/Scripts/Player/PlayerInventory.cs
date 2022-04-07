@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 namespace Player
 {
     public class PlayerInventory : MonoBehaviour
@@ -101,6 +102,7 @@ namespace Player
         {
             if (!col.CompareTag("Respawn") || !Input.GetButton("Interact")) return;
             StartCoroutine(DisplayHint(true));
+            player.HealPlayer();
             FindObjectOfType<AudioManager>().Play("Shrine");
             respawnIndex = SceneManager.GetActiveScene().buildIndex;
             respawnPoint = transform.position;

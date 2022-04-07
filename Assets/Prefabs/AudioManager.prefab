@@ -226,3 +226,17 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: Play
+    clip: {fileID: 8300000, guid: 55a2bcaf564de484586df3bb0f062a17, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: LevelTransition
+    clip: {fileID: 8300000, guid: b2af4150e2a1e8e4e8723070a1733737, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}

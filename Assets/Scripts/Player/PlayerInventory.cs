@@ -46,6 +46,10 @@ namespace Player
                     playerUpgrades.Add(Upgrades.DoubleJump);
                     //Plays cool sound for picking up new power
                     FindObjectOfType<AudioManager>().Play("PowerPickup");
+                    // Set's respawn point in cave, as if the player dies after the powerup,
+                    // the player is returned to try again
+                    respawnPoint = player.transform.position;
+                    respawnIndex = 2;
                     break;
                 case Upgrades.Dash:
                     // Add upgrade to list of upgrades player has.

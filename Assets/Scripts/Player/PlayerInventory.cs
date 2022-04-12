@@ -87,6 +87,7 @@ namespace Player
         public void SetCoins(int amount)
         {
             playerCoins = amount;
+            SetCountText();
         }
 
         public int GetCoins()
@@ -101,6 +102,15 @@ namespace Player
         public int GetRespawnIndex()
         {
             return respawnIndex;
+        }
+        public void SetRespawnPoint(Vector3 respawn)
+        {
+            respawnPoint = respawn;
+        }
+
+        public void SetRespawnIndex(int index)
+        {
+            respawnIndex = index;
         }
         private void OnTriggerStay2D(Collider2D col)
         {

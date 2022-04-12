@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetFloat("posX", playerpos.x);
         PlayerPrefs.SetFloat("posY", playerpos.y);
         PlayerPrefs.SetFloat("posZ", playerpos.z);
+        PlayerPrefs.SetInt("levelIndex", SceneManager.GetActiveScene().buildIndex);
         
         var pi = GameObject.Find("Player").GetComponent<PlayerInventory>();
         PlayerPrefs.SetInt("coins", pi.GetCoins());

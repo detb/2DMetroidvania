@@ -236,6 +236,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &115794097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 115794098}
+  m_Layer: 0
+  m_Name: old
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &115794098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115794097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1311464, y: -1.1596302, z: -122.05243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1012669943}
+  - {fileID: 875925025}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123017534
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +297,7 @@ Transform:
   m_LocalScale: {x: 58.404926, y: 12.534047, z: 1}
   m_Children: []
   m_Father: {fileID: 1007914001}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &123017536
 SpriteRenderer:
@@ -104450,7 +104482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &875925025
 Transform:
   m_ObjectHideFlags: 0
@@ -104459,11 +104491,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875925024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12.627269}
+  m_LocalPosition: {x: -3.7711463, y: 1.3896302, z: 110.42516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1007914001}
-  m_RootOrder: 6
+  m_Father: {fileID: 115794098}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &875925026
 MonoBehaviour:
@@ -104559,7 +104591,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.4
+  orthographic size: 1.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -109658,8 +109690,6 @@ Transform:
   - {fileID: 1973059721}
   - {fileID: 1478460165}
   - {fileID: 1086505385}
-  - {fileID: 1012669943}
-  - {fileID: 875925025}
   - {fileID: 123017535}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -109681,7 +109711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1012669943
 Transform:
   m_ObjectHideFlags: 0
@@ -109690,12 +109720,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012669942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12.627269}
+  m_LocalPosition: {x: -3.7711463, y: 1.3896302, z: 110.42516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 523709002}
-  m_Father: {fileID: 1007914001}
-  m_RootOrder: 5
+  m_Father: {fileID: 115794098}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1012669944
 MonoBehaviour:
@@ -109732,7 +109762,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 1.4
+    OrthographicSize: 1.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -109864,7 +109894,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.75
-  cam: {fileID: 1012669942}
 --- !u!212 &1086505387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -110921,7 +110950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.8
-  cam: {fileID: 1012669942}
 --- !u!212 &1478460167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112924,7 +112952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.85
-  cam: {fileID: 1012669942}
 --- !u!212 &1648503401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118356,7 +118383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.85
-  cam: {fileID: 1012669942}
 --- !u!212 &1973059725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118455,7 +118481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.9
-  cam: {fileID: 1012669942}
 --- !u!212 &1983615188
 SpriteRenderer:
   m_ObjectHideFlags: 0

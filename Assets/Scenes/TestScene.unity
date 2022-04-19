@@ -268,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78262523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.4300838, y: -0.07799997, z: -9}
+  m_LocalPosition: {x: -6.4268527, y: -0.07799997, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 382151951}
@@ -5521,7 +5521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.75
-  cam: {fileID: 1858073962}
 --- !u!1 &199901509
 GameObject:
   m_ObjectHideFlags: 0
@@ -6096,7 +6095,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.4300838, y: -0.07799997, z: -9}
+  m_LocalPosition: {x: -6.4268527, y: -0.07799997, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2079478201}
@@ -6571,7 +6570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.8
-  cam: {fileID: 1858073962}
 --- !u!1001 &863068555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6737,7 +6735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.85
-  cam: {fileID: 1858073962}
 --- !u!198 &882386127
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -11974,7 +11971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.85
-  cam: {fileID: 1858073962}
 --- !u!1 &1103721531
 GameObject:
   m_ObjectHideFlags: 0
@@ -12789,7 +12785,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.9
-  cam: {fileID: 1858073962}
 --- !u!1 &1363801938
 GameObject:
   m_ObjectHideFlags: 0

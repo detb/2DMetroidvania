@@ -12,6 +12,7 @@ namespace Enemies
         private AIPlayerDetector playerDetector;
         private AIMeleeAttackDetector meleeAttackDetector;
         private Transform player;
+        private AudioManager am;
 
         [Header("Player")]
             [SerializeField]
@@ -47,6 +48,7 @@ namespace Enemies
         // Start is called before the first frame update
         void Start()
         {
+            am = FindObjectOfType<AudioManager>();
             player = GameObject.Find("Player").transform;
             enemyAnimator = GetComponent<Animator>();
             playerDetector = GetComponent<AIPlayerDetector>();
@@ -147,15 +149,16 @@ namespace Enemies
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
 
+
         //Made for enemy sounds only
-        void SkeletonWalk()
+        void EnemySound(string sound)
         {
-            FindObjectOfType<AudioManager>().Play("SkeletonWalk");
+            am.Play(sound);
         }
 
         void SkeletonAttack()
         {
-            FindObjectOfType<AudioManager>().Play("SkeletonAttack");
+            FindObjectOfType<AudioManager>().Play("");
         }
 
         void SkeletonDeath() 

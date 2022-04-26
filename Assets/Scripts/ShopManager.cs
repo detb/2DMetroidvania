@@ -23,11 +23,11 @@ public class ShopManager : MonoBehaviour
         ShopMenuUI.SetActive(false);
         shopItems[1, 1] = 1;
         shopItems[1, 2] = 2;
-        shopItems[1, 3] = 3;
+        //shopItems[1, 3] = 3;
         
         shopItems[2, 1] = 50;
         shopItems[2, 2] = 150;
-        shopItems[2, 3] = 30;
+        //shopItems[2, 3] = 30;
     }
 
     public void Buy(int id)

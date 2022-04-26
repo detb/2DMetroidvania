@@ -196,5 +196,30 @@ namespace Enemies
         {
             FindObjectOfType<AudioManager>().Play("BlobHit");
         }
+        void BossWalk()
+        {
+            FindObjectOfType<AudioManager>().Play("BossWalk");
+        }
+
+        void BossAttack()
+        {
+            FindObjectOfType<AudioManager>().Play("BossAttack");
+        }
+
+        void BossDeath()
+        {
+            FindObjectOfType<AudioManager>().Play("BossDeath");
+        }
+
+        void BossHit()
+        {
+            FindObjectOfType<AudioManager>().Play("BossHit");
+        }
+
+        void BossCast()
+        {
+            FindObjectOfType<AudioManager>().Play("BossCast");
+        }
+
     }
 }

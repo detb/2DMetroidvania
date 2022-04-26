@@ -240,3 +240,38 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: BossAttack
+    clip: {fileID: 8300000, guid: 6011b3d0511c8ec49965bead193f2733, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BossHit
+    clip: {fileID: 8300000, guid: 9d60cf3adb521d94dbbc1e78a80989d4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BossWalk
+    clip: {fileID: 8300000, guid: f94fe0647a43b1c49abdb91b9092b805, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BossCast
+    clip: {fileID: 8300000, guid: c862c5fc9fbc3b04f8da445e7d39e3a1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Lightning
+    clip: {fileID: 8300000, guid: e8efd6d869c428e448e9f1c51b930fa1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}

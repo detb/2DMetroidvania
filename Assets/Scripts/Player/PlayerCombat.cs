@@ -141,6 +141,11 @@ namespace Player
             //}
         }
 
+        public void UpgradeDamage(int amount)
+        {
+            attackDamage = amount;
+        }
+
         private void OnDrawGizmosSelected()
         {
             if (attackPoint == null || attackPointUpwards == null)

@@ -22,7 +22,7 @@ namespace Player
         public TextMeshProUGUI respawnSet;
         public enum Upgrades
         {
-            DoubleJump, Dash, HeavyAttack, Coin, DamageLevelUp, WallJump
+            DoubleJump, Dash, HeavyAttack, Coin, DamageLevelUp, WallJump, HealthUp
         }
 
         // Nothing in this for now, might be useful later?
@@ -60,6 +60,14 @@ namespace Player
                 case Upgrades.Coin: AddCoin();
                     //Plays coind sound when picking up coins
                     FindObjectOfType<AudioManager>().Play("CoinPickup"); break;
+                case Upgrades.DamageLevelUp:
+                    playerUpgrades.Add(Upgrades.DamageLevelUp);
+                    GetComponent<PlayerCombat>().UpgradeDamage(90);
+                    break;
+                case Upgrades.HealthUp:
+                    playerUpgrades.Add(Upgrades.HealthUp);
+                    player.SetMaxHealth(8);
+                    break;
             }
 
         }

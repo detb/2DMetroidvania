@@ -162,6 +162,11 @@ namespace Player
             healthBar.SetMaxHealth(maxHealth);
         }
 
+        public void SetMaxHealth(int amount)
+        {
+            maxHealth = amount;
+            HealPlayer();
+        }
         private void FixedUpdate()
         {
             if(frozen) return;

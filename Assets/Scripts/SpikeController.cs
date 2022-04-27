@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Audio;
 using Player;
 using UnityEngine;
@@ -17,7 +15,7 @@ public class SpikeController : MonoBehaviour
 
     void HurtPlayer()
     {
-        player.TakeDamage(1);
+        player.TakeDamage(20);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

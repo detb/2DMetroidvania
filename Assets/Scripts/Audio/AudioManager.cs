@@ -30,7 +30,7 @@ namespace Audio
         private void Start()
         {
         DontDestroyOnLoad(gameObject);
-            FindObjectOfType<AudioManager>().Play("MenuMusic");
+        Play("MenuMusic");
         }
     
         public void PlayLevelMusic(int level)
@@ -39,11 +39,11 @@ namespace Audio
             switch (level)
             {
                 case 1:
-                    FindObjectOfType<AudioManager>().Play("ForestMusic");
-                    FindObjectOfType<AudioManager>().Play("ForestAmbience");
+                    Play("ForestMusic");
+                    Play("ForestAmbience");
                     break;
                 case 2:
-                    FindObjectOfType<AudioManager>().Play("CaveAmbience");
+                    Play("CaveAmbience");
                     break;
             }
         }
@@ -53,14 +53,14 @@ namespace Audio
             switch (prevLevel)
             {
                 case 0:
-                    FindObjectOfType<AudioManager>().Stop("MenuMusic");
+                    Stop("MenuMusic");
                     break;
                 case 1:
-                    FindObjectOfType<AudioManager>().Stop("ForestMusic");
-                    FindObjectOfType<AudioManager>().Stop("ForestAmbience");
+                    Stop("ForestMusic");
+                    Stop("ForestAmbience");
                     break;
                 case 2:
-                    FindObjectOfType<AudioManager>().Stop("CaveAmbience");
+                    Stop("CaveAmbience");
                     break;
             }
         }

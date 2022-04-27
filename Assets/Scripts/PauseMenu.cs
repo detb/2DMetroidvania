@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuUI;
 
     private static bool spawned = false;
+    private PlayerController pc;
     void Awake(){
         DontDestroyOnLoad (this);
         if(spawned)     
@@ -21,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void Start()
     {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
         PauseMenuUI.SetActive(false);
     }
 
@@ -34,7 +33,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
-        GameObject.Find("Player").GetComponent<PlayerController>().Unfreeze();
+        pc.Unfreeze();
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -42,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        GameObject.Find("Player").GetComponent<PlayerController>().Freeze();
+        pc.Freeze();
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;

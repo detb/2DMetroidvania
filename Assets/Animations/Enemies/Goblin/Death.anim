@@ -77,7 +77,7 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: EnemySound
-    data: GoblinWalk
+    data: GoblinDeath
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

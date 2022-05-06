@@ -63,8 +63,7 @@ namespace Enemies
             else if (!playerDetector.playerDetected)
                 enemyAnimator.SetBool(PlayerDetected, false);
 
-
-            if (Time.time >= attackTime)
+if (Time.time >= attackTime)
             {
                 if (meleeAttackDetector.playerDetected)
                 {
@@ -72,6 +71,8 @@ namespace Enemies
                     enemyAnimator.SetTrigger(Attack1);
                 }
             }
+
+
         }
 
         public void TakeDamage(int damage)
@@ -150,79 +151,10 @@ namespace Enemies
         }
 
 
-        //Made for enemy sounds only
+        //Made for enemy sounds
         void EnemySound(string sound)
         {
             am.Play(sound);
         }
-
-        void SkeletonAttack()
-        {
-            FindObjectOfType<AudioManager>().Play("");
-        }
-
-        void SkeletonDeath() 
-        {
-            FindObjectOfType<AudioManager>().Play("SkeletonDeath");
-        }
-
-        void SkeletonHit()
-        {
-            FindObjectOfType<AudioManager>().Play("SkeletonHit");
-        }
-        void GoblinWalk()
-        {
-            FindObjectOfType<AudioManager>().Play("GoblinWalk");
-        }
-
-        void GoblinAttack()
-        {
-            FindObjectOfType<AudioManager>().Play("GoblinAttack");
-        }
-
-        void GoblinDeath()
-        {
-            FindObjectOfType<AudioManager>().Play("GoblinDeath");
-        }
-
-        void BlobAttack()
-        {
-            FindObjectOfType<AudioManager>().Play("BlobAttack");
-        }
-
-        void BlobDeath()
-        {
-            FindObjectOfType<AudioManager>().Play("BlobDeath");
-        }
-
-        void BlobHit()
-        {
-            FindObjectOfType<AudioManager>().Play("BlobHit");
-        }
-        void BossWalk()
-        {
-            FindObjectOfType<AudioManager>().Play("BossWalk");
-        }
-
-        void BossAttack()
-        {
-            FindObjectOfType<AudioManager>().Play("BossAttack");
-        }
-
-        void BossDeath()
-        {
-            FindObjectOfType<AudioManager>().Play("BossDeath");
-        }
-
-        void BossHit()
-        {
-            FindObjectOfType<AudioManager>().Play("BossHit");
-        }
-
-        void BossCast()
-        {
-            FindObjectOfType<AudioManager>().Play("BossCast");
-        }
-
     }
 }

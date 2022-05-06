@@ -43,6 +43,7 @@ namespace Audio
                     FindObjectOfType<AudioManager>().Play("ForestAmbience");
                     break;
                 case 2:
+                    FindObjectOfType<AudioManager>().Play("CaveMusic");
                     FindObjectOfType<AudioManager>().Play("CaveAmbience");
                     break;
             }
@@ -61,6 +62,7 @@ namespace Audio
                     break;
                 case 2:
                     FindObjectOfType<AudioManager>().Stop("CaveAmbience");
+                    FindObjectOfType<AudioManager>().Stop("CaveMusic");
                     break;
             }
         }

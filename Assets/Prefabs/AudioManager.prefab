@@ -143,7 +143,7 @@ MonoBehaviour:
     playOnAwake: 0
     source: {fileID: 0}
   - name: ForestMusic
-    clip: {fileID: 8300000, guid: 2aa59910399142b468f4e4a8a5482a4a, type: 3}
+    clip: {fileID: 8300000, guid: a99dbea0aa169764ead8df461fa54081, type: 3}
     volume: 0.313
     pitch: 1
     loop: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CaveAmbience
     clip: {fileID: 8300000, guid: 9b1b674ab1ef404428333c5457760760, type: 3}
-    volume: 0.513
+    volume: 1
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -273,5 +273,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: CaveMusic
+    clip: {fileID: 8300000, guid: 0f8463f0de5113b4e965c9c34a496a0b, type: 3}
+    volume: 0.791
+    pitch: 1
+    loop: 1
     playOnAwake: 0
     source: {fileID: 0}

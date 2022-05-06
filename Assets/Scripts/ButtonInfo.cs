@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,10 +11,15 @@ public class ButtonInfo : MonoBehaviour
     public TextMeshProUGUI priceText;
 
     public GameObject Shop;
-    
-    // Update is called once per frame
+    private ShopManager sm;
+
+    private void Start()
+    {
+        sm = Shop.GetComponent<ShopManager>();
+    }
+
     void Update()
     {
-        priceText.text = "$" + Shop.GetComponent<ShopManager>().shopItems[2, ItemID];
+        priceText.text = "$" + sm.shopItems[2, ItemID];
     }
 }

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Audio;
 using Player;
 using UnityEngine;
@@ -18,7 +16,8 @@ public class LevelLoader : MonoBehaviour
     private int levelIndex;
     [SerializeField]
     private Vector3 nextLevelPosition;
-    
+
+    private AudioManager am;
     private static readonly int StartAnim = Animator.StringToHash("start");
     
     [Header("On new scene event")]
@@ -32,6 +31,7 @@ public class LevelLoader : MonoBehaviour
     void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
     public void LoadLevelAndRespawn(int index)
     {
@@ -52,7 +52,6 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadLevel(int index)
     {
-        var am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         pc.SetRBGravity(0f);
         pc.Freeze();
         am.StopLevelMusic();

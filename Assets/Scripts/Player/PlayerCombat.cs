@@ -8,6 +8,7 @@ namespace Player
     {
         private Animator playerAnimator;
         private Rigidbody2D rb;
+        private PlayerController pc;
         
         [Header("Attack points")]
             [SerializeField]
@@ -47,6 +48,7 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {
+            pc = GetComponent<PlayerController>();
             playerAnimator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
         }
@@ -54,13 +56,13 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            if (GetComponent<PlayerController>().IsFrozen()) return;
+            if (pc.IsFrozen()) return;
             if (!(Time.time >= attackTime)) return;
             if (!Input.GetButtonDown("Fire1")) 
                 return;
             if (Input.GetAxisRaw("Vertical") > 0)
                 playerAnimator.SetTrigger(Attackupwards);
-            if (Input.GetAxisRaw("Vertical") < 0 && !GetComponent<PlayerController>().IsPlayerGrounded())
+            if (Input.GetAxisRaw("Vertical") < 0 && !pc.IsPlayerGrounded())
             {
                 playerAnimator.SetTrigger(Attackdownwards);
                 AttackDownwards();
@@ -105,7 +107,7 @@ namespace Player
 
         private void AttackUpwards()
         {
-            if (GetComponent<PlayerController>().IsFrozen()) return;
+            if (pc.IsFrozen()) return;
             // Detect enemy's in attack range
             Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPointUpwards.position, attackRangeUpwards, enemyLayers);
 

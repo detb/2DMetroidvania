@@ -6,21 +6,21 @@ This is our GMD project, where we've tried to create a 2D metroidvania-like game
 youtube link
 
 ## Github Pages link to playable demo:
-Github Pages link
+https://detb.github.io/TryOutMetroidvainiaGame/
 
 ## Third party tutorials and assets:
-https://www.youtube.com/watch?v=uOobLo2y3KI - AI Player detection
-https://www.youtube.com/watch?v=BLfNP4Sc_iA - Healthbar
-https://www.youtube.com/watch?v=AD4JIXQDw0s&t=925s - Boss
-https://www.youtube.com/watch?v=CE9VOZivb3I - Scene transitions
-https://www.youtube.com/watch?v=nkgGyO9VG54 - 2D Lights
-https://pavcreations.com/parallax-scrolling-in-pixel-perfect-2d-unity-games/ - Parallax background scrolling effect
+* https://www.youtube.com/watch?v=uOobLo2y3KI - AI Player detection
+* https://www.youtube.com/watch?v=BLfNP4Sc_iA - Healthbar
+* https://www.youtube.com/watch?v=AD4JIXQDw0s&t=925s - Boss
+* https://www.youtube.com/watch?v=CE9VOZivb3I - Scene transitions
+* https://www.youtube.com/watch?v=nkgGyO9VG54 - 2D Lights
+* https://pavcreations.com/parallax-scrolling-in-pixel-perfect-2d-unity-games/ - Parallax background scrolling effect
 
 Asset store packs:
-https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-rpg-16x16-items-pack-1-70276
-https://assetstore.unity.com/packages/2d/free-2d-mega-pack-177430
-https://assetstore.unity.com/packages/2d/environments/platformer-fantasy-set1-159063
-https://assetstore.unity.com/packages/tools/playersprefs-editor-and-utilities-26656
-https://assetstore.unity.com/packages/2d/environments/2d-platfrom-tile-set-cave-61672
-https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
-https://assetstore.unity.com/packages/2d/environments/platformer-fantasy-set1-159063
+* https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-rpg-16x16-items-pack-1-70276
+* https://assetstore.unity.com/packages/2d/free-2d-mega-pack-177430
+* https://assetstore.unity.com/packages/2d/environments/platformer-fantasy-set1-159063
+* https://assetstore.unity.com/packages/tools/playersprefs-editor-and-utilities-26656
+* https://assetstore.unity.com/packages/2d/environments/2d-platfrom-tile-set-cave-61672
+* https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
+* https://assetstore.unity.com/packages/2d/environments/platformer-fantasy-set1-159063

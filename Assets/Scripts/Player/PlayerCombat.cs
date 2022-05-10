@@ -131,8 +131,8 @@ namespace Player
                 // find knockback direction
                 //knockbackDirection = (rb.transform.position - enemy.transform.position).normalized;
                 //enemyHit = true;
+             
                 enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-
             } 
             
             //TODO: If enemy hit, add knockback..

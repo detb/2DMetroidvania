@@ -14,11 +14,10 @@ GameObject:
   - component: {fileID: -4349310322080825853}
   - component: {fileID: -8769996233429696087}
   - component: {fileID: -4538874127553099877}
+  - component: {fileID: 3471226634881344093}
   - component: {fileID: -3787617998047435658}
   - component: {fileID: -4953639910106136692}
-  - component: {fileID: -7282232255760717691}
   - component: {fileID: 3724656627231554251}
-  - component: {fileID: 2591504460065303732}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Untagged
@@ -34,12 +33,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786945207216624014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0.297, y: 0.23, z: 0}
   m_LocalScale: {x: 1.8351717, y: 2.1437619, z: 1}
   m_Children:
   - {fileID: 5168294590095118376}
   - {fileID: 2829207853104149037}
-  - {fileID: 1852848689558567233}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -154,7 +152,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.33, y: -0.2}
   serializedVersion: 2
   m_Radius: 0.27
 --- !u!95 &-4538874127553099877
@@ -176,6 +174,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3471226634881344093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786945207216624014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70ea1d65ac7e794ca7041c409cabe46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  maxHealth: 100
+  isFlipped: 0
+  attackPoint: {fileID: 5168294590095118376}
+  attackRange: 0.5
+  attackSpeed: 4
+  attackDamage: 4
+  onEnemyDiedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-3787617998047435658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,28 +235,6 @@ MonoBehaviour:
   playerDetected: 0
   gizmoIdleColor: {r: 0, g: 1, b: 1, a: 0.48235294}
   showGizmos: 1
---- !u!114 &-7282232255760717691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786945207216624014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8543ac91c89664d4e8c73e58cb85a597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  OnPlayerDetected:
-    m_PersistentCalls:
-      m_Calls: []
-  radius: 0.792
-  playerDetected: 0
-  gizmoIdleColor: {r: 0, g: 0, b: 1, a: 0.44705883}
-  showGizmos: 1
 --- !u!114 &3724656627231554251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,35 +258,6 @@ MonoBehaviour:
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.33333334}
   gizmoActiveColor: {r: 1, g: 0, b: 0, a: 0.41960785}
   showGizmos: 1
---- !u!114 &2591504460065303732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786945207216624014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70663ae320a4f63468f0ac1f6f98560a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  maxHealth: 10000
-  isFlipped: 1
-  spellStrike: {fileID: 3706039747468303319, guid: 0c1bbd6fc4cd96b48924308eadd66248, type: 3}
-  attackPoint: {fileID: 2829207853104149037}
-  attackRange: 0.5
-  attackSpeed: 4
-  attackDamage: 0
-  spellPoint: {fileID: 1852848689558567233}
-  spellRange: 10
-  castSpeed: 7
-  spellDamage: 4
-  onEnemyDiedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1615900728095826433
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,36 +331,6 @@ MonoBehaviour:
   - {x: 0.09137201, y: 0.12176655, z: 0}
   - {x: -0.0020198822, y: 0.22720544, z: 0}
   - {x: -0.10825825, y: 0.14540607, z: 0}
---- !u!1 &5051729571475811049
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1852848689558567233}
-  m_Layer: 11
-  m_Name: SpellPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1852848689558567233
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5051729571475811049}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6916804730245083087}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6440841570030544057
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 6440841570030544057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.655, y: -0.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 6916804730245083087}
   m_RootOrder: 0

@@ -256,7 +256,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BossWalk
     clip: {fileID: 8300000, guid: f94fe0647a43b1c49abdb91b9092b805, type: 3}
-    volume: 1
+    volume: 0.423
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -277,8 +277,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CaveMusic
     clip: {fileID: 8300000, guid: 0f8463f0de5113b4e965c9c34a496a0b, type: 3}
-    volume: 0.791
+    volume: 0.52
     pitch: 1
     loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: 7be429d95ae7aae4aab0d7dedb0fe429, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     playOnAwake: 0
     source: {fileID: 0}

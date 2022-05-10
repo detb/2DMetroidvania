@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4349310322080825853}
   - component: {fileID: -8769996233429696087}
   - component: {fileID: -4538874127553099877}
-  - component: {fileID: -4018005296093752453}
+  - component: {fileID: 3471226634881344093}
   - component: {fileID: -3787617998047435658}
   - component: {fileID: -4953639910106136692}
   - component: {fileID: 3724656627231554251}
@@ -33,8 +33,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786945207216624014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.021, y: -0.003, z: 0}
-  m_LocalScale: {x: 1.3188363, y: 1.5701375, z: 1}
+  m_LocalPosition: {x: 0.297, y: 0.23, z: 0}
+  m_LocalScale: {x: 1.8351717, y: 2.1437619, z: 1}
   m_Children:
   - {fileID: 5168294590095118376}
   - {fileID: 2829207853104149037}
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.345, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -152,7 +152,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.33, y: -0.2}
   serializedVersion: 2
   m_Radius: 0.27
 --- !u!95 &-4538874127553099877
@@ -174,7 +174,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-4018005296093752453
+--- !u!114 &3471226634881344093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,12 +189,12 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  maxHealth: 10000
-  isFlipped: 1
+  maxHealth: 100
+  isFlipped: 0
   attackPoint: {fileID: 5168294590095118376}
   attackRange: 0.5
   attackSpeed: 4
-  attackDamage: 0
+  attackDamage: 4
   onEnemyDiedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -227,25 +227,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   OnPlayerDetected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  radius: 0
+      m_Calls: []
+  radius: 0.547
   playerDetected: 0
-  gizmoIdleColor: {r: 0, g: 1, b: 1, a: 1}
+  gizmoIdleColor: {r: 0, g: 1, b: 1, a: 0.48235294}
   showGizmos: 1
 --- !u!114 &3724656627231554251
 MonoBehaviour:
@@ -260,16 +248,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectorOrigin: {fileID: 6916804730245083087}
-  detectorSize: {x: 1, y: 1}
+  detectorSize: {x: 10, y: 10}
   detectorOriginOffset: {x: 0, y: 0}
-  detectionDelay: 0.3
+  detectionDelay: 0.1
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
   playerDetected: 0
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.33333334}
   gizmoActiveColor: {r: 1, g: 0, b: 0, a: 0.41960785}
-  showGizmos: 0
+  showGizmos: 1
 --- !u!1 &1615900728095826433
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 6440841570030544057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.655, y: -0.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 6916804730245083087}
   m_RootOrder: 0

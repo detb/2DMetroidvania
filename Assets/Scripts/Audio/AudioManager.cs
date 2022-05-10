@@ -44,6 +44,7 @@ namespace Audio
                     break;
                 case 2:
                     Play("CaveAmbience");
+                    Play("CaveMusic");
                     break;
             }
         }
@@ -61,6 +62,7 @@ namespace Audio
                     break;
                 case 2:
                     Stop("CaveAmbience");
+                    Stop("CaveMusic");
                     break;
             }
         }

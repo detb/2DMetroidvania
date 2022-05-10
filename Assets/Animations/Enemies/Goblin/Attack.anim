@@ -88,8 +88,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.13333334
-    functionName: GoblinAttack
-    data: 
+    functionName: EnemySound
+    data: GoblinAttack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

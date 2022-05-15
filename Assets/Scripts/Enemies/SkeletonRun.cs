@@ -24,16 +24,17 @@ namespace Enemies
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (animator.GetComponent<AIPlayerDetector>().playerDetected)
-            {
-                enemy.LookAtPlayer();
+            if (!animator.GetComponent<AIPlayerDetector>().playerDetected) return;
+            enemy.LookAtPlayer();
 
-                var position = rb.position;
-                Vector2 target = new Vector2(player.position.x, position.y);
-                Vector2 newPos = Vector2.MoveTowards(position, target, speed * Time.fixedDeltaTime);
-                rb.MovePosition(newPos);
-            }
+            var position = rb.position;
+            Vector2 target = new Vector2(player.position.x, position.y);
+            Vector2 newPos = Vector2.MoveTowards(position, target, speed * Time.fixedDeltaTime);
+            rb.MovePosition(newPos);
 
+            //Plays Skeleton walk sound, need if() to check when we get more enemies
+            //FindObjectOfType<AudioManager>().Play("SkeletonWalk");
+            //need to look at!
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

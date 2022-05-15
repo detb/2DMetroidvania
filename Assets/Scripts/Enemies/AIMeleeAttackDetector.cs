@@ -15,15 +15,21 @@ namespace Enemies
         private float radius;
         
         public bool playerDetected;
-
+        private AIPlayerDetector playerDetector;
+        
         [Header("Gizmo variables")]
             [SerializeField]
             private Color gizmoIdleColor = Color.cyan;
             [SerializeField]
             private bool showGizmos = true;
 
+        void Start()
+        {
+            playerDetector = GetComponent<AIPlayerDetector>();
+        }
         void Update()
         {
+            if (!playerDetector.playerDetected) return;
             var collider = Physics2D.OverlapCircle(transform.position, radius, targetLayer);
             playerDetected = collider != null;
             if (playerDetected)

@@ -58,21 +58,21 @@ namespace Enemies
 
         void Update()
         {
-            if (playerDetector.playerDetected)
-                enemyAnimator.SetBool(PlayerDetected, true);
-            else if (!playerDetector.playerDetected)
-                enemyAnimator.SetBool(PlayerDetected, false);
-
-if (Time.time >= attackTime)
+            switch (playerDetector.playerDetected)
             {
-                if (meleeAttackDetector.playerDetected)
-                {
-                    attackTime = Time.time + 2f / attackSpeed;
-                    enemyAnimator.SetTrigger(Attack1);
-                }
+                case true:
+                    enemyAnimator.SetBool(PlayerDetected, true);
+                    break;
+                case false:
+                    enemyAnimator.SetBool(PlayerDetected, false);
+                    break;
             }
 
 
+            if (!(Time.time >= attackTime)) return;
+            if (!meleeAttackDetector.playerDetected) return;
+            attackTime = Time.time + 2f / attackSpeed;
+            enemyAnimator.SetTrigger(Attack1);
         }
 
         public void TakeDamage(int damage)

@@ -194,7 +194,7 @@ MonoBehaviour:
   attackPoint: {fileID: 3633729676608376475}
   attackRange: 0.5
   attackSpeed: 2
-  attackDamage: 0
+  attackDamage: 2
   onEnemyDiedEvent:
     m_PersistentCalls:
       m_Calls:

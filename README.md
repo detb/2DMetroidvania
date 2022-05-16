@@ -31,3 +31,10 @@ Asset store packs:
 
 Sound source:
 * https://freesound.org/
+
+
+### Wishes for future development:
+* More upgrades: dashing attack, charge attack, spells.
+* Updated boss mechanics with spells, better pathfinding.
+* Flying and jumping enemies, that chase the player throughout the level. 
+* Visually updating the player with glow, armor etc. to indicate bought and found upgrades.

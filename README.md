@@ -3,7 +3,7 @@ This is our GMD project, where we've tried to create a 2D metroidvania-like game
 ![image](https://user-images.githubusercontent.com/57094519/167427045-9de3638b-b237-4933-9801-356d440e1510.png)
 
 ## Youtube demonstration: 
-youtube link
+https://youtu.be/zvgt51eGxh4
 
 ## Github Pages link to playable demo:
 https://detb.github.io/TryOutMetroidvainiaGame/
